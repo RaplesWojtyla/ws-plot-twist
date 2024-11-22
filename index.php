@@ -27,6 +27,7 @@
 
 <body id="top">
 
+<?php include 'func.php' ?>
   <!-- 
     - #HEADER
   -->
