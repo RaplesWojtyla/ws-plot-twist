@@ -9,16 +9,16 @@ function query($query) {
     return $sparql_jena->query($query);
 }
 
-function search($input) {
-    $query = "
-    SELECT ?Film WHERE {
-        ?Film fil:hasTitle ?namaFilm.
-        FILTER (regex(?namaFilm, \"$input\", 'i'))
-    }";
-    return query($query);
-}
+// function search($input) {
+//     $query = "
+//     SELECT ?Film WHERE {
+//         ?Film fil:hasTitle ?namaFilm.
+//         FILTER (regex(?namaFilm, \"$input\", 'i'))
+//     }";
+//     return query($query);
+// }
 
-function showFilm($page = 1, $itemsPerPage = 12) {
+function showFilm($keyword, $page, $itemsPerPage) {
     // Calculate offset
     $offset = ($page - 1) * $itemsPerPage;
     
@@ -30,6 +30,10 @@ function showFilm($page = 1, $itemsPerPage = 12) {
         ?Film fil:hasImage ?image .
         ?Film fil:hasDuration ?duration .
         ?Film fil:hasYear ?Tahun .
+
+		FILTER(REGEX(?namaFilm, '$keyword', 'i') ||
+			   REGEX(?Tahun, '$keyword', 'i') ||
+			   REGEX() . 
     }
     ORDER BY ?namaFilm
     LIMIT " . $itemsPerPage . "
@@ -53,7 +57,7 @@ function getTotalFilms() {
 }
 
 // Pagination helper function
-function generatePaginationData($currentPage, $totalItems, $itemsPerPage = 12) {
+function generatePaginationData($currentPage, $totalItems, $itemsPerPage) {
     $totalPages = ceil($totalItems / $itemsPerPage);
     $currentPage = max(1, min($currentPage, $totalPages));
     
