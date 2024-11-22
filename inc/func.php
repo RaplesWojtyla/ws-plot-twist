@@ -8,7 +8,7 @@
 
 	
 	function query($query){
-		$sparql_jena = new \EasyRdf\Sparql\Client("http://localhost:3030/filmLane/sparql");
+		$sparql_jena = new \EasyRdf\Sparql\Client("http://localhost:3030/plot-twist/sparql");
 		return $res = $sparql_jena->query($query);
 	}
 	function search($input){
@@ -23,13 +23,15 @@
 	function showFilm()
 	{
 		$query =
-		" SELECT ?Film ?namaFilm ?rating ?image ?duration 
+		" SELECT ?Film ?namaFilm ?rating ?image ?duration ?Tahun
 		WHERE
 		{
 			?Film fil:hasTitle ?namaFilm .
 			?Film fil:hasRating ?rating .
 			?Film fil:hasImage ?image .
-			?Film fil:hasDuration ?duration .  
+			?Film fil:hasDuration ?duration .
+			?Film fil:hasYear ?Tahun .
+			
 		}
 		";
 		return query($query);
