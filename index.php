@@ -236,19 +236,21 @@
                 {
             ?>
 
-            <li>
+<li>
               <div class="movie-card">
 
-                <a href=".\movie-details.php?Film=<?=$data->Film?>">
+                <a href="./movie-details.html">
                   <figure class="card-banner">
                     <img src="<?= $data->image ?>" alt="The Northman movie poster">
                   </figure>
                 </a>
 
                 <div class="title-wrapper">
-                  <a href=".\movie-details.php?Film=<?=$data->Film?>">
-                    <h3 class="card-title"><?= $data->namaFilm ?></h3>
+                  <a href="./movie-details.html">
+                    <h3 class="card-title"> <?= $data->namaFilm ?></h3>
                   </a>
+
+                  <time datetime="2022"><?= $data->Tahun ?></time>
                 </div>
 
                 <div class="card-meta">
@@ -257,15 +259,16 @@
                   <div class="duration">
                     <ion-icon name="time-outline"></ion-icon>
 
-                    <time datetime="PT137M"><?= $data->duration?></time>
+                    <time datetime="PT137M">137 min</time>
                   </div>
 
                   <div class="rating">
                     <ion-icon name="star"></ion-icon>
 
-                    <data><?= $data->rating ?></data>
+                    <data>8.5</data>
                   </div>
                 </div>
+
               </div>
             </li>
             <?php } ?>
@@ -278,7 +281,7 @@
     <button class="pagination-btn" data-page="1">1</button>
     <button class="pagination-btn" data-page="2">2</button>
     <button class="pagination-btn" data-page="3">3</button>
-    <!-- Tambahkan nomor halaman sesuai kebutuhan -->
+    
   </span>
 
   <button class="pagination-btn next" data-page="next" aria-label="Next Page">Next</button>
