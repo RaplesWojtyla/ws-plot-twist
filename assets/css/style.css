@@ -209,7 +209,7 @@
   
   .ganre-wrapper > a:is(:hover, :focus) { color: var(--citrine); }
   
-  .date-time { gap: 15px; }
+  .date-time { gap: 15px;}
   
   .date-time > div {
     display: flex;
