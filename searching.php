@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,7 +161,7 @@
           
           <!-- Search Bar -->
           <div class="search-bar">
-            <form action="./searching.php" method="POST">
+          <form action="./searching.php" method="POST">
               <input type="text" name="input" placeholder="Search for movies, TV shows, and more..." class="search-input">
               <button type="submit" name="cari" class="search-button">
                 <ion-icon name="search-outline"></ion-icon>
@@ -231,7 +233,11 @@
           <ul class="movies-list">
 
             <?php
-                $res = showFilm();
+
+                if (isset($_POST["cari"])) {
+                  $input = $_POST["input"];
+                }
+                $res = search($input);
                 foreach($res as $data)
                 {
             ?>

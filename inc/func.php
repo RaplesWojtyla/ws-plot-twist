@@ -11,13 +11,23 @@
 		$sparql_jena = new \EasyRdf\Sparql\Client("http://localhost:3030/filmLane/sparql");
 		return $res = $sparql_jena->query($query);
 	}
+	
 	function search($input){
-		$query ="
-		SELECT ?Film WHERE {
-			?Film fil:hasTitle ?namaFilm.
+		$query =
+		" SELECT ?Film ?namaFilm ?rating ?image ?duration 
+		WHERE
+		{
+			?Film fil:hasTitle ?namaFilm .
+			?Film fil:hasRating ?rating .
+			?Film fil:hasImage ?image .
+			?Film fil:hasDuration ?duration .  
+		}
 			FILTER (regex(?namaFilm, \"$input\", 'i'))
-		}";
+		";
+		return query($query);
 	}
+
+
 
 
 	function showFilm()
