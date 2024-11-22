@@ -239,14 +239,14 @@
 <li>
               <div class="movie-card">
 
-                <a href="./movie-details.html">
+                <a href=".\movie-details.php?Film=<?=$data->Film?>">
                   <figure class="card-banner">
                     <img src="<?= $data->image ?>" alt="The Northman movie poster">
                   </figure>
                 </a>
 
                 <div class="title-wrapper">
-                  <a href="./movie-details.html">
+                  <a href=".\movie-details.php?Film=<?= $data->Film?>">
                     <h3 class="card-title"> <?= $data->namaFilm ?></h3>
                   </a>
 
@@ -274,18 +274,46 @@
             <?php } ?>
           </ul>
 <!-- Pagination -->
-<div class="pagination">
-  <button class="pagination-btn prev" data-page="prev" aria-label="Previous Page">Previous</button>
-  
-  <span class="page-numbers">
-    <button class="pagination-btn" data-page="1">1</button>
-    <button class="pagination-btn" data-page="2">2</button>
-    <button class="pagination-btn" data-page="3">3</button>
-    
-  </span>
+<?php
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$itemsPerPage = 12;
+$totalItems = getTotalFilms();
+$paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
+$films = showFilm($currentPage, $itemsPerPage);
+?>
 
-  <button class="pagination-btn next" data-page="next" aria-label="Next Page">Next</button>
+<!-- Your existing movies-list code -->
+<ul class="movies-list">
+    <?php foreach($films as $data) { ?>
+        <!-- Your existing movie card code -->
+    <?php } ?>
+</ul>
+
+<!-- Updated pagination section -->
+<div class="pagination">
+    <?php if ($paginationData['hasPrev']): ?>
+        <a href="?page=<?php echo ($currentPage - 1); ?>" class="pagination-btn prev">Previous</a>
+    <?php else: ?>
+        <span class="pagination-btn prev disabled">Previous</span>
+    <?php endif; ?>
+    
+    <span class="page-numbers">
+        <?php for ($i = $paginationData['start']; $i <= $paginationData['end']; $i++): ?>
+            <a href="?page=<?php echo $i; ?>" 
+               class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
+               data-page="<?php echo $i; ?>">
+                <?php echo $i; ?>
+            </a>
+        <?php endfor; ?>
+    </span>
+
+    <?php if ($paginationData['hasNext']): ?>
+        <a href="?page=<?php echo ($currentPage + 1); ?>" class="pagination-btn next">Next</a>
+    <?php else: ?>
+        <span class="pagination-btn next disabled">Next</span>
+    <?php endif; ?>
 </div>
+
 
         </div>
       </section>

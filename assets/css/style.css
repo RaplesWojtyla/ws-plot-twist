@@ -259,6 +259,7 @@
   
   .movies-list {
     display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Membuat 8 kolom per baris */
     gap: 50px;
   }
   

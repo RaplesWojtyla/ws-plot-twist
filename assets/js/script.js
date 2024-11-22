@@ -54,7 +54,7 @@ window.addEventListener("scroll", function () {
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  const itemsPerPage = 8;
+  const itemsPerPage = 20;
   const moviesList = document.querySelector(".movies-list");
   const movies = Array.from(moviesList.children);
   const paginationBtns = document.querySelectorAll(".pagination-btn");
