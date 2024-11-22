@@ -1,3 +1,13 @@
+<?php
+  include './inc/func.php';
+  $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+  $itemsPerPage = 20;
+  $totalItems = getTotalFilms();
+  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
+  $keyword = isset($_POST['search']) ? $_POST['search'] : "";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +36,6 @@
 </head>
 
 <body id="top">
-
-<?php include './inc/func.php' ?>
   <!-- 
     - #HEADER
   -->
@@ -37,7 +45,7 @@
 
       <div class="overlay" data-overlay></div>
 
-      <a href="./index.html" class="logo">
+      <a href="./index.php" class="logo">
         <img src="./assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
@@ -52,94 +60,90 @@
             <ion-icon name="globe-outline"></ion-icon>
           </label>
 
-         
 
-      </div>
-
-      <button class="menu-open-btn" data-menu-open-btn>
-        <ion-icon name="reorder-two"></ion-icon>
-      </button>
-
-      <nav class="navbar" data-navbar>
-
-        <div class="navbar-top">
-
-          <a href="./index.html" class="logo">
-            <img src="./assets/images/logo.svg" alt="Filmlane logo">
-          </a>
-
-          <button class="menu-close-btn" data-menu-close-btn>
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
 
         </div>
 
-        <ul class="navbar-list">
+        <button class="menu-open-btn" data-menu-open-btn>
+          <ion-icon name="reorder-two"></ion-icon>
+        </button>
 
-          <li>
-            <a href="./index.html" class="navbar-link">Home</a>
-          </li>
+        <nav class="navbar" data-navbar>
 
-          <li>
-            <a href="#" class="navbar-link">Movie</a>
-          </li>
+          <div class="navbar-top">
 
-          <li>
-            <a href="#" class="navbar-link">Tv Show</a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-link">Web Series</a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-link">Show Genre</a>
-          </li>
-
-        </ul>
-
-        <ul class="navbar-social-list">
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <a href="./index.php" class="logo">
+              <img src="./assets/images/logo.svg" alt="Filmlane logo">
             </a>
-          </li>
 
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
+            <button class="menu-close-btn" data-menu-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
 
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-pinterest"></ion-icon>
-            </a>
-          </li>
+          </div>
 
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
+          <ul class="navbar-list">
 
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-youtube"></ion-icon>
-            </a>
-          </li>
+            <li>
+              <a href="./index.php" class="navbar-link">Home</a>
+            </li>
 
-        </ul>
+            <li>
+              <a href="#" class="navbar-link">Movie</a> 
+            </li>
 
-      </nav>
+            <li>
+              <a href="#" class="navbar-link">Tv Show</a>
+            </li>
 
-    </div>
+            <li>
+              <a href="#" class="navbar-link">Web Series</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">Show Genre</a>
+            </li>
+
+          </ul>
+
+          <ul class="navbar-social-list">
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+      </div>
   </header>
-
-
-
-
 
   <main>
     <article>
@@ -151,24 +155,25 @@
       <section class="hero">
         <div class="container">
           <div class="hero-content">
-            <p class="hero-subtitle">Filmlane</p>
+            <p class="hero-subtitle">Plot Twist</p>
             <h1 class="h1 hero-title">
               Unlimited <strong>Movie</strong>, TVs Shows, & More.
             </h1>
           </div>
-          
+
           <!-- Search Bar -->
           <div class="search-bar">
-            <form action="#" method="GET">
-              <input type="text" name="query" placeholder="Search for movies, TV shows, and more..." class="search-input">
-              <button type="submit" class="search-button">
+            <form method="POST">
+              <input type="text" name="search" placeholder="Search for movies, TV shows, and more..."
+                class="search-input">
+              <button name="searchBtn" type="submit" class="search-button">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
             </form>
           </div>
         </div>
       </section>
-      
+
 
       <!-- 
         - #UPCOMING
@@ -214,7 +219,7 @@
                   <li><a href="#">Romance</a></li>
                 </ul>
               </li>
-              
+
 
               <!-- <li>
                 <button class="filter-btn">TV Shows</button>
@@ -231,26 +236,30 @@
           <ul class="movies-list">
 
             <?php
-                $res = showFilm();
-                foreach($res as $data)
-                {
+            if (!isset($_GET['page'])) {
+            $res = showFilm($keyword, $currentPage, $itemsPerPage);
+            foreach ($res as $data) {
             ?>
 
-<li>
+            <li>
               <div class="movie-card">
 
-                <a href=".\movie-details.php?Film=<?=$data->Film?>">
+                <a href=".\movie-details.php?Film=<?= $data->Film ?>">
                   <figure class="card-banner">
                     <img src="<?= $data->image ?>" alt="The Northman movie poster">
                   </figure>
                 </a>
 
                 <div class="title-wrapper">
-                  <a href=".\movie-details.php?Film=<?= $data->Film?>">
-                    <h3 class="card-title"> <?= $data->namaFilm ?></h3>
+                  <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                    <h3 class="card-title">
+                      <?= $data->namaFilm ?>
+                    </h3>
                   </a>
 
-                  <time datetime="2022"><?= $data->Tahun ?></time>
+                  <time datetime="2022">
+                    <?= $data->Tahun ?>
+                  </time>
                 </div>
 
                 <div class="card-meta">
@@ -259,13 +268,63 @@
                   <div class="duration">
                     <ion-icon name="time-outline"></ion-icon>
 
-                    <time datetime="PT137M">137 min</time>
+                    <time datetime="PT137M"><?= $data->duration ?></time>
                   </div>
 
                   <div class="rating">
                     <ion-icon name="star"></ion-icon>
 
-                    <data>8.5</data>
+                    <data><?= $data->rating ?></data>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <?php }} ?>
+          </ul>
+          <!-- Pagination -->
+          <?php
+          if (isset($_GET['page'])) {
+          $films = showFilm($keyword, $currentPage, $itemsPerPage);
+          ?>
+
+          <!-- Your existing movies-list code -->
+          <ul class="movies-list">
+            <?php foreach ($films as $data) { ?>
+              <li>
+              <div class="movie-card">
+
+                <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                  <figure class="card-banner">
+                    <img src="<?= $data->image ?>" alt="The Northman movie poster">
+                  </figure>
+                </a>
+
+                <div class="title-wrapper">
+                  <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                    <h3 class="card-title">
+                      <?= $data->namaFilm ?>
+                    </h3>
+                  </a>
+
+                  <time datetime="2022">
+                    <?= $data->Tahun ?>
+                  </time>
+                </div>
+
+                <div class="card-meta">
+                  <div class="badge badge-outline">HD</div>
+
+                  <div class="duration">
+                    <ion-icon name="time-outline"></ion-icon>
+
+                    <time datetime="PT137M"><?= $data->duration ?></time>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+
+                    <data><?= $data->rating ?></data>
                   </div>
                 </div>
 
@@ -273,46 +332,32 @@
             </li>
             <?php } ?>
           </ul>
-<!-- Pagination -->
-<?php
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$itemsPerPage = 12;
-$totalItems = getTotalFilms();
-$paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
-$films = showFilm($currentPage, $itemsPerPage);
-?>
+          <?php } ?>
 
-<!-- Your existing movies-list code -->
-<ul class="movies-list">
-    <?php foreach($films as $data) { ?>
-        <!-- Your existing movie card code -->
-    <?php } ?>
-</ul>
+          <!-- Updated pagination section -->
+          <div class="pagination">
+            <?php if ($paginationData['hasPrev']): ?>
+            <a href="?page=<?php echo ($currentPage - 1); ?>" class="pagination-btn prev">Previous</a>
+            <?php else: ?>
+            <span class="pagination-btn prev disabled">Previous</span>
+            <?php endif; ?>
 
-<!-- Updated pagination section -->
-<div class="pagination">
-    <?php if ($paginationData['hasPrev']): ?>
-        <a href="?page=<?php echo ($currentPage - 1); ?>" class="pagination-btn prev">Previous</a>
-    <?php else: ?>
-        <span class="pagination-btn prev disabled">Previous</span>
-    <?php endif; ?>
-    
-    <span class="page-numbers">
-        <?php for ($i = $paginationData['start']; $i <= $paginationData['end']; $i++): ?>
-            <a href="?page=<?php echo $i; ?>" 
-               class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
-               data-page="<?php echo $i; ?>">
+            <span class="page-numbers">
+              <?php for ($i = $paginationData['start']; $i <= $paginationData['end']; $i++): ?>
+              <a href="?page=<?php echo $i; ?>"
+                class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
+                data-page="<?php echo $i; ?>">
                 <?php echo $i; ?>
-            </a>
-        <?php endfor; ?>
-    </span>
+              </a>
+              <?php endfor; ?>
+            </span>
 
-    <?php if ($paginationData['hasNext']): ?>
-        <a href="?page=<?php echo ($currentPage + 1); ?>" class="pagination-btn next">Next</a>
-    <?php else: ?>
-        <span class="pagination-btn next disabled">Next</span>
-    <?php endif; ?>
-</div>
+            <?php if ($paginationData['hasNext']): ?>
+            <a href="?page=<?php echo ($currentPage + 1); ?>" class="pagination-btn next">Next</a>
+            <?php else: ?>
+            <span class="pagination-btn next disabled">Next</span>
+            <?php endif; ?>
+          </div>
 
 
         </div>
@@ -344,14 +389,14 @@ $films = showFilm($currentPage, $itemsPerPage);
 
         <div class="footer-brand-wrapper">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
           <ul class="footer-list">
 
             <li>
-              <a href="./index.html" class="footer-link">Home</a>
+              <a href="./index.php" class="footer-link">Home</a>
             </li>
 
             <li>
@@ -379,7 +424,7 @@ $films = showFilm($currentPage, $itemsPerPage);
     </div>
 
     <div class="footer-bottom">
-      
+
     </div>
 
   </footer>
