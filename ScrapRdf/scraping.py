@@ -14,24 +14,26 @@ def scrape_film_details(driver, film_url):
     Fungsi untuk scrape data dari halaman detail film
     """
     driver.get(film_url)
-    time.sleep(4)  # Tunggu agar halaman detail film termuat
+    time.sleep(10)  # Tunggu agar halaman detail film termuat
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     # Mengambil data film
     title = soup.find('h1').get_text(strip=True) if soup.find('h1') else "N/A"
-    release_date = soup.find('span', {'class': 'date'}).get_text(strip=True) if soup.find('span',
-                                                                                          {'class': 'date'}) else "N/A"
-    # genre_elements = soup.find_all('a', {'href': lambda x: x and '/genre/' in x})
-    # genres = ", ".join([genre.get_text(strip=True) for genre in genre_elements]) if genre_elements else "N/A"
+    # director = driver.find_element(By.CSS_SELECTOR, "div[id='cast'] > div.persons > div.person > div.data > div.name > a").text if driver.find_element(By.CSS_SELECTOR, "div[id='cast'] > div.persons > div.person > div.data > div.name > a") else "N/A"
+    director_sect = soup.find("div", id="cast")
+    director = director_sect.find("meta", itemprop="name")['content']
+    release_date = soup.find('span', {'class': 'date'}).get_text(strip=True) if soup.find('span',{'class': 'date'}) else "N/A"
+    country = driver.find_element(By.CSS_SELECTOR, "div.extra > span.country").text if driver.find_element(By.CSS_SELECTOR, "div.extra > span.country") else "N/A"
     div_genre = soup.find('div', class_='sgeneros')
     genres = [a.get_text(strip=True) for a in div_genre.find_all('a')] if div_genre else "N/A"
 
     sinopsis_elements = driver.find_elements(By.CSS_SELECTOR, "div[itemprop='description'] > p")
     sinopsis = sinopsis_elements[0].text if sinopsis_elements else "N/A"
-    
-    rating = driver.find_element(By.CSS_SELECTOR, "div.starstruck-rating > span").text if driver.find_element(By.CSS_SELECTOR, "div.starstruck-rating > span") else "N/A"
-    
+
+    rating = driver.find_element(By.CSS_SELECTOR, "div.starstruck-rating > span").text if driver.find_element(
+        By.CSS_SELECTOR, "div.starstruck-rating > span") else "N/A"
+
     duration_elements = driver.find_elements(By.CSS_SELECTOR, "div.extra > span.runtime")
     duration = duration_elements[0].text if duration_elements else "N/A"
 
@@ -40,7 +42,9 @@ def scrape_film_details(driver, film_url):
 
     return {
         'Title': title,
+        'Director': director,
         'Release Date': release_date,
+        'Country': country,
         'Genres': genres,
         'Sinopsis': sinopsis,
         'Rating': rating,
@@ -48,13 +52,16 @@ def scrape_film_details(driver, film_url):
         'Image URL': image_url
     }
 
-i = 797
+
+# i = 797
+
+
 def scrape_page(driver, rdf_file):
     """
     Fungsi untuk scrape data film dari halaman utama
     """
 
-    global i
+    i = 1
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # Temukan semua elemen <article> yang sesuai
     film_links = soup.find_all('article', class_='item movies')
@@ -72,7 +79,6 @@ def scrape_page(driver, rdf_file):
             href = link_tag.get('href')
             urls.append(href)
 
-    # urls = [link['href'] for link in film_links]
     unique_urls = []
 
     for url in urls:
@@ -86,26 +92,27 @@ def scrape_page(driver, rdf_file):
         print(f"Scraping film: {url}")
         film_data = scrape_film_details(driver, url)
 
-        # if j == 2: break
-
         # Menulis data ke dalam file RDF
         rdf_file.write(f':Film{i} a :Film ;\n')
         rdf_file.write(f'    :hasTitle "{film_data["Title"]}" ;\n')
+        rdf_file.write(f'    :hasDirector "{film_data["Director"]}" ;\n')
         rdf_file.write(f'    :hasReleaseDate "{film_data["Release Date"]}" ;\n')
+        rdf_file.write(f'    :hasCountry "{film_data["Country"]}" ;\n')
         rdf_file.write(f'    :hasGenres "{film_data["Genres"]}" ;\n')
         rdf_file.write(f'    :hasSinopsis "{film_data["Sinopsis"]}" ;\n')
         rdf_file.write(f'    :hasRating "{film_data["Rating"]}" ;\n')
         rdf_file.write(f'    :hasDuration "{film_data["Duration"]}" ;\n')
         rdf_file.write(f'    :hasImage "{film_data["Image URL"]}" .\n\n')
-        i += 1
+
 
 def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
     """
     Fungsi untuk scrape seluruh halaman dan menyimpan data dalam file RDF
     """
     driver.get(start_url)
-    time.sleep(4)
-    current_page = 105  # halaman terakhir scraping 20 11 2024
+    time.sleep(10)
+    # current_page = 105  # halaman terakhir scraping 20 11 2024
+    current_page = 1
 
     with open(rdf_output, 'w', encoding='utf-8') as rdf_file:
         # Menulis header RDF
@@ -119,7 +126,16 @@ def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
         rdf_file.write("          rdfs:domain :Film ;\n")
         rdf_file.write("          rdfs:range xsd:string .\n\n")
 
+        rdf_file.write(":Film rdf:type rdf:Class .\n")
+        rdf_file.write(":hasDirector rdf:type rdf:Property ;\n")
+        rdf_file.write("          rdfs:domain :Film ;\n")
+        rdf_file.write("          rdfs:range xsd:string .\n\n")
+
         rdf_file.write(":hasReleaseDate rdf:type rdf:Property ;\n")
+        rdf_file.write("                rdfs:domain :Film ;\n")
+        rdf_file.write("                rdfs:range xsd:string .\n\n")
+
+        rdf_file.write(":hasCountry rdf:type rdf:Property ;\n")
         rdf_file.write("                rdfs:domain :Film ;\n")
         rdf_file.write("                rdfs:range xsd:string .\n\n")
 
@@ -149,16 +165,16 @@ def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
 
             # Scrape data di halaman saat ini
             scrape_page(driver, rdf_file)
+            time.sleep(10)
             try:
                 # pindah ke halaman berikutnya
                 current_page += 1
                 base_url = f"https://tv2.idlix.asia/movie/page/{current_page}/"
                 driver.get(base_url)
-                time.sleep(5)
+                time.sleep(10)
             except Exception as e:
                 print(f"Error while navigating to the next page: {e}")
                 break  # Hentikan jika tidak bisa klik "Next"
-
 
 
 # Main program
@@ -167,7 +183,7 @@ if __name__ == "__main__":
     driver = webdriver.Chrome()
 
     try:
-        start_url = "https://tv2.idlix.asia/movie/page/105/"
+        start_url = "https://tv2.idlix.asia/movie/page/2"
         scrape_all_pages(driver, start_url, max_pages=108)
     finally:
         driver.quit()
