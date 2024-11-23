@@ -1,4 +1,4 @@
-<?php
+x<?php
 require './vendor/autoload.php';
 
 \EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
@@ -30,14 +30,16 @@ function showFilm($keyword, $page, $itemsPerPage) {
         ?Film fil:hasImage ?image .
         ?Film fil:hasDuration ?duration .
         ?Film fil:hasYear ?Tahun .
+        ?Film fil:hasDirector ?director .
 
 		FILTER(REGEX(?namaFilm, '$keyword', 'i') ||
-			   REGEX(?Tahun, '$keyword', 'i')) .
+			   REGEX(?Tahun, '$keyword', 'i') ||
+               REGEX(?director, '$keyword', 'i')) .
     }
     ORDER BY ?namaFilm
     LIMIT " . $itemsPerPage . "
     OFFSET " . $offset;
-    
+
     return query($query);
 }
 
