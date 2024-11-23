@@ -32,8 +32,7 @@ function showFilm($keyword, $page, $itemsPerPage) {
         ?Film fil:hasYear ?Tahun .
 
 		FILTER(REGEX(?namaFilm, '$keyword', 'i') ||
-			   REGEX(?Tahun, '$keyword', 'i') ||
-			   REGEX() . 
+			   REGEX(?Tahun, '$keyword', 'i')) .
     }
     ORDER BY ?namaFilm
     LIMIT " . $itemsPerPage . "
