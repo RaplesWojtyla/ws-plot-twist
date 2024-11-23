@@ -1,0 +1,758 @@
+@prefix : <http://example.org/movie#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Film rdf:type rdf:Class .
+:hasTitle rdf:type rdf:Property ;
+          rdfs:domain :Film ;
+          rdfs:range xsd:string .
+
+:Film rdf:type rdf:Class .
+:hasDirector rdf:type rdf:Property ;
+          rdfs:domain :Film ;
+          rdfs:range xsd:string .
+
+:hasReleaseDate rdf:type rdf:Property ;
+                rdfs:domain :Film ;
+                rdfs:range xsd:string .
+
+:hasCountry rdf:type rdf:Property ;
+                rdfs:domain :Film ;
+                rdfs:range xsd:string .
+
+:hasGenres rdf:type rdf:Property ;
+           rdfs:domain :Film ;
+           rdfs:range xsd:string .
+
+:hasSinopsis rdf:type rdf:Property ;
+             rdfs:domain :Film ;
+             rdfs:range xsd:string .
+
+:hasRating rdf:type rdf:Property ;
+             rdfs:domain :Film ;
+             rdfs:range xsd:string .
+
+:hasDuration rdf:type rdf:Property ;
+             rdfs:domain :Film ;
+             rdfs:range xsd:string .
+
+:hasImage rdf:type rdf:Property ;
+          rdfs:domain :Film ;
+          rdfs:range xsd:string .
+
+:Film2400 a :Film ;
+    :hasTitle "One Piece: The Desert Princess and the Pirates: Adventure in Alabasta (2007)" ;
+    :hasDirector "Takahiro Imamura" ;
+    :hasReleaseDate "03. Mar, 2007" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime', 'Comedy', 'Drama']" ;
+    :hasSinopsis "A re-telling of the Alabaster Arc from One Piece (TV). Luffy and his crew come to rescue a land in the midst of a civil war, due to a powerful devil fruit user." ;
+    :hasRating "8.7"^^xsd:decimal ;
+    :hasDuration "90 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/xdUr3hCslqkgqsgahpnXbIynOBe.jpg" .
+
+:Film2401 a :Film ;
+    :hasTitle "One Piece: Dead End Adventure (2003)" ;
+    :hasDirector "Konosuke Uda" ;
+    :hasReleaseDate "01. Mar, 2003" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime']" ;
+    :hasSinopsis "Desperate for cash, the Straw Hat Pirates enter a secret race between pirate crews known as the Dead End Competition. There, they must battle against powerful people, including the bounty hunter who wants to kill Gasparde and a climatic battle with Marine-turned-pirate Captain Gasparde." ;
+    :hasRating "9.2"^^xsd:decimal ;
+    :hasDuration "95 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/tEJBIHzaW1IoOVHtgblXy76kj4G.jpg" .
+
+:Film2402 a :Film ;
+    :hasTitle "One Piece: Clockwork Island Adventure (2001)" ;
+    :hasDirector "Atsuji Shimizu" ;
+    :hasReleaseDate "03. Mar, 2001" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime']" ;
+    :hasSinopsis "Relaxing on a cozy beach, the Straw Hat Pirates are taking a rest from their quest. Right until Luffy noticed the Going Merry has been hijacked and sailed off from the beach. This leads them to search the ship and find the thief who took it from them. They ran into a duo named the Theif Brothers, who informed them that their ship was stolen by a group of pirates called the Trump Kyoudai. When they encountered the Trump Pirates, Nami ended up getting kidnapped as well as Luffy’s hat. They tracked down the pirates to their base on Clockwork Island. Now Luffy, Zoro, Sanji, Usopp, and the Theif Brothers must reclaim the Going Merry, Save Nami, and get back Shank’s straw hat." ;
+    :hasRating "7.9"^^xsd:decimal ;
+    :hasDuration "60 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/cXHTcUfCs6LvVjmhx3EzYgQRXWU.jpg" .
+
+:Film2403 a :Film ;
+    :hasTitle "One Piece: Chopper’s Kingdom on the Island of Strange Animals (2002)" ;
+    :hasDirector "Atsuji Shimizu" ;
+    :hasReleaseDate "02. Mar, 2002" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime']" ;
+    :hasSinopsis "As the Straw Hat Pirates sail through the Grand Line.A line of geysers erupted from under the Going Merry. And the whole crew find themselves flying over the island. Unfortunatly, Chopper fell off the ship and was separated from his friends. Luffy and the others landed on the other side of the island. Chopper meanwhile finds himself being worshiped as the island’s new king by the animals. To make matters worse, a trio of human “horn” hunters are on the island. The leader, Count Butler is a violin playing/horn eating human who wants to eat the island’s treasure to inherit immense power. Will Luffy & the rest be able to prevent the count from terrorizing the island? And will they be able to convince Momambi that not all pirates are bad?" ;
+    :hasRating "8.2"^^xsd:decimal ;
+    :hasDuration "56 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/8uzFccR8F3h7tC9zfIOT063r91N.jpg" .
+
+:Film2404 a :Film ;
+    :hasTitle "One Piece: Baron Omatsuri and the Secret Island (2005)" ;
+    :hasDirector "Mamoru Hosoda" ;
+    :hasReleaseDate "05. Mar, 2005" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Animation', 'Anime', 'Comedy']" ;
+    :hasSinopsis "The Straw Hats visit a recreational island, run by Baron Omatsuri, who asks them to complete a series of ordeals if they wish to stay on the island. Luffy accepts and the Straw Hats work together to complete them, but as the island’s mysteries unfold, their lives and friendships are put to the test. It’s up to Luffy to stop the Baron’s plot and keep his crew together." ;
+    :hasRating "8.6"^^xsd:decimal ;
+    :hasDuration "92 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/oHS6lWs7zMVj3tqbx9JoALG52xq.jpg" .
+
+:Film2405 a :Film ;
+    :hasTitle "One Piece: Adventure of Nebulandia (2015)" ;
+    :hasDirector "Konosuke Uda" ;
+    :hasReleaseDate "20. Dec, 2015" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime', 'Comedy', 'Fantasy']" ;
+    :hasSinopsis "Kōmei devises a plan where Zoro and Sanji take part in an eating contest, and the two eat a strange “good-for-nothing-only” mushroom that turns them into good-for-nothing men. The two are then locked in a jail cell. When the rest of the Straw Hat Pirates chase after their imprisoned crew, they land on the island of Nebulandia, which features a mysterious fog made from sea water, and it has the same effects as seastone. The Straw Hat Pirates’ arrival on Nebulandia is also a part of Kōmei’s plan." ;
+    :hasRating "8.6"^^xsd:decimal ;
+    :hasDuration "106 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/xdu9XJSHT835OoChOiwEgi9Uzjf.jpg" .
+
+:Film2406 a :Film ;
+    :hasTitle "One Piece “3D2Y”: Overcome Ace’s Death! Luffy’s Vow to his Friends (2014)" ;
+    :hasDirector "Naoyuki Itou" ;
+    :hasReleaseDate "31. Dec, 2014" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime', 'Comedy', 'Fantasy']" ;
+    :hasSinopsis "The special takes place during the two year before the Straw Hats reunite on Sabody. Luffy is currently in Rusukaina training to get stronger to take on the New World. However the training is interrupted when Hancock’s sisters, Marigold and Sandersonia, are kidnapped by the Byrnndi World, a pirate who was locked away on Level 6 of Impel Down but escaped during Luffy’s invasion to save Ace, in order to lure Hancock to him and use her as a hostage against the World Government due to her Shichibukai status. Thus Luffy and Hancock head off to confront him and save Hancock’s sisters." ;
+    :hasRating "8.8"^^xsd:decimal ;
+    :hasDuration "105 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/caUI7YlhVXykFWQ7Ul7RQ2wQRpv.jpg" .
+
+:Film2407 a :Film ;
+    :hasTitle "One Piece 3D: Straw Hat Chase (2011)" ;
+    :hasDirector "Hiroyuki Satou" ;
+    :hasReleaseDate "19. Mar, 2011" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Adventure', 'Animation', 'Anime']" ;
+    :hasSinopsis "One Piece 3D: Straw Hat Chase is the 11th One Piece film of the series, and is set before the time-skip. This is One Piece’s first movie release to be in 3D CGI. The movie is also the first One Piece film since Movie 3 to be a double-feature. This time, the film was featured with “Toriko 3D: Gourmet Adventure”, both being billed as the “Jump Heroes Film”. The double-feature was released on March 19, 2011.granmaster" ;
+    :hasRating "7.5"^^xsd:decimal ;
+    :hasDuration "30 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/cxA7j9wGNQCNyJcWjX43k5EC2WC.jpg" .
+
+:Film2408 a :Film ;
+    :hasTitle "The Last Women Standing (2015)" ;
+    :hasDirector "Luo Luo" ;
+    :hasReleaseDate "06. Nov, 2015" ;
+    :hasCountry "China" ;
+    :hasGenres "['Romance']" ;
+    :hasSinopsis "For the thirtysomething Sheng Ruxi, whose surname unmistakably echoes the slang term “sheng nu” (leftover women), the wait for a perfect partner is growing more despairing by the day. With an ultra-anxious mother who would rather die than see her daughter stay single, Ruxi is further annoyed by the doctor she’s fixed up with. Could her new colleague, the dashing 25-year-old Ma Sai, offer last-minute salvation?" ;
+    :hasRating "9.8"^^xsd:decimal ;
+    :hasDuration "96 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/krp7jLzQDWGhwvMX1rKvsQfGvxT.jpg" .
+
+:Film2409 a :Film ;
+    :hasTitle "The Seven Deadly Sins: Grudge of Edinburgh Part 1 (2022)" ;
+    :hasDirector "Noriyuki Abe" ;
+    :hasReleaseDate "20. Dec, 2022" ;
+    :hasCountry "Unknown" ;
+    :hasGenres "['Action', 'Adventure', 'Animation', 'Anime', 'Fantasy']" ;
+    :hasSinopsis "Tristan, the son of Meliodas and Elizabeth, inherits the power of the Goddess Clan and can heal people’s wounds and injuries, but he often ends up hurting others due to his inability to control his Demon Clan power. To protect his family, Tristan heads to Edinburgh Castle and meets a host of new friends along the way." ;
+    :hasRating "7.8"^^xsd:decimal ;
+    :hasDuration "52 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/bXKrI97G2Gz0GBsoJTPgoiyihAR.jpg" .
+
+:Film2410 a :Film ;
+    :hasTitle "HELL DOGS (2022)" ;
+    :hasDirector "Masato Harada" ;
+    :hasReleaseDate "16. Sep, 2022" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action']" ;
+    :hasSinopsis "Adapted from the manga Hell Dogs by Fukamachi Akio." ;
+    :hasRating "9.9"^^xsd:decimal ;
+    :hasDuration "137 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/9qD4IBWMqIX3hitHucj6FvrKwxe.jpg" .
+
+:Film2411 a :Film ;
+    :hasTitle "The Fabelmans (2022)" ;
+    :hasDirector "Steven Spielberg" ;
+    :hasReleaseDate "11. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy', 'Drama']" ;
+    :hasSinopsis "Growing up in post-World War II era Arizona, young Sammy Fabelman aspires to become a filmmaker as he reaches adolescence, but soon discovers a shattering family secret and explores how the power of films can help him see the truth." ;
+    :hasRating "8.9"^^xsd:decimal ;
+    :hasDuration "151 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/xId9zoiv5WPQOuxqykUDrlpmrUz.jpg" .
+
+:Film2412 a :Film ;
+    :hasTitle "Taylor Swift City of Lover Concert (2020)" ;
+    :hasDirector "Dan Massie" ;
+    :hasReleaseDate "17. May, 2020" ;
+    :hasCountry "France" ;
+    :hasGenres "['Documentary', 'Music']" ;
+    :hasSinopsis "In a once-in-a-lifetime musical event, Taylor Swift performs songs from her award-winning album, “Lover.” Filmed in Paris, the City of Love, in September 2019, this show gives fans unprecedented access to behind-the-scenes moments with the artist and marks her only concert performance in 2020." ;
+    :hasRating "10"^^xsd:decimal ;
+    :hasDuration "42 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/ksCyBrDLJyT4hCuDXZS5oTDNX0p.jpg" .
+
+:Film2413 a :Film ;
+    :hasTitle "It’s a Wonderful Binge (2022)" ;
+    :hasDirector "Jordan VanDina" ;
+    :hasReleaseDate "09. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy']" ;
+    :hasSinopsis "Like the original film, the sequel is set in a near future where all drinking and drugs are banned except for on one glorious day known as The Binge. This year, that day happens to miraculously land on Christmas." ;
+    :hasRating "8"^^xsd:decimal ;
+    :hasDuration "99 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/hU9ouAPcg2LG7n85WUxjKwPq2y4.jpg" .
+
+:Film2414 a :Film ;
+    :hasTitle "The Marriage App (2022)" ;
+    :hasDirector "Sebastián De Caro" ;
+    :hasReleaseDate "07. Dec, 2022" ;
+    :hasCountry "Argentina" ;
+    :hasGenres "['Comedy', 'Romance']" ;
+    :hasSinopsis "Tangled in a troubled marriage, a frustrated couple finds hope in a watch-based app that rewards good deeds — until unhealthy obsessiveness takes over." ;
+    :hasRating "5.8"^^xsd:decimal ;
+    :hasDuration "101 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/kKDOqkbY0jNNv66bHz3ZpFaaRws.jpg" .
+
+:Film2415 a :Film ;
+    :hasTitle "Glass Onion: A Knives Out Mystery (2022)" ;
+    :hasDirector "Rian Johnson" ;
+    :hasReleaseDate "23. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy', 'Mystery', 'Thriller']" ;
+    :hasSinopsis "World-famous detective Benoit Blanc heads to Greece to peel back the layers of a mystery surrounding a tech billionaire and his eclectic crew of friends." ;
+    :hasRating "9.1"^^xsd:decimal ;
+    :hasDuration "139 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/vDGr1YdrlfbU9wxTOdpf3zChmv9.jpg" .
+
+:Film2416 a :Film ;
+    :hasTitle "Strange World (2022)" ;
+    :hasDirector "Don Hall" ;
+    :hasReleaseDate "23. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Adventure', 'Animation', 'Family', 'Science Fiction']" ;
+    :hasSinopsis "A journey deep into an uncharted and treacherous land, where fantastical creatures await the legendary Clades—a family of explorers whose differences threaten to topple their latest, and by far most crucial, mission." ;
+    :hasRating "5.7"^^xsd:decimal ;
+    :hasDuration "102 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/mPywkW1dfDer6GxxTvjwOTsAVud.jpg" .
+
+:Film2417 a :Film ;
+    :hasTitle "High Heat (2022)" ;
+    :hasDirector "Zach Golden" ;
+    :hasReleaseDate "16. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Action', 'Comedy', 'Crime']" ;
+    :hasSinopsis "When the local mafia shows up to burn down her restaurant, Ana, a chef with a meticulous past, defends her turf and proves her knife skills both in and out of the kitchen." ;
+    :hasRating "7.8"^^xsd:decimal ;
+    :hasDuration "84 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/rzOBtwhso2u1XrLNmNDuuKCtFLL.jpg" .
+
+:Film2418 a :Film ;
+    :hasTitle "Violent Night (2022)" ;
+    :hasDirector "Tommy Wirkola" ;
+    :hasReleaseDate "30. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Action', 'Comedy', 'Crime', 'Thriller']" ;
+    :hasSinopsis "When a team of mercenaries breaks into a wealthy family compound on Christmas Eve, taking everyone inside hostage, the team isn’t prepared for a surprise combatant: Santa Claus is on the grounds, and he’s about to show why this Nick is no saint." ;
+    :hasRating "9.2"^^xsd:decimal ;
+    :hasDuration "112 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/1CHp8QQjGwqWaPZWjzcRidlt5Xs.jpg" .
+
+:Film2419 a :Film ;
+    :hasTitle "Resurrection (2022)" ;
+    :hasDirector "Andrew Semans" ;
+    :hasReleaseDate "29. Jul, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Drama', 'Horror', 'Thriller']" ;
+    :hasSinopsis "A woman’s carefully constructed life is upended when an unwelcome shadow from her past returns, forcing her to confront the monster she’s evaded for two decades." ;
+    :hasRating "5.2"^^xsd:decimal ;
+    :hasDuration "103 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/kfRr8Jm1gaEnLTXCIfHkSw8QW6t.jpg" .
+
+:Film2420 a :Film ;
+    :hasTitle "The Apology (2022)" ;
+    :hasDirector "Alison Star Locke" ;
+    :hasReleaseDate "16. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Horror', 'Thriller']" ;
+    :hasSinopsis "Twenty years after the disappearance of her daughter, a recovering alcoholic is preparing to host her family’s Christmas celebration when her estranged ex-bother-in-law arrives unannounced, bearing nostalgic gifts and a heavy secret." ;
+    :hasRating "6.5"^^xsd:decimal ;
+    :hasDuration "91 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/pqH23XXiGGg8b8QKitonZAoWQg3.jpg" .
+
+:Film2421 a :Film ;
+    :hasTitle "My Policeman (2022)" ;
+    :hasDirector "Michael Grandage" ;
+    :hasReleaseDate "21. Oct, 2022" ;
+    :hasCountry "United Kingdom" ;
+    :hasGenres "['Drama', 'Romance']" ;
+    :hasSinopsis "In the late 1990s, the arrival of elderly invalid Patrick into Marion and Tom’s home triggers the exploration of seismic events from 40 years previous: the passionate relationship between Tom and Patrick at a time when homosexuality was illegal." ;
+    :hasRating "7.5"^^xsd:decimal ;
+    :hasDuration "113 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/wdbiMjXd4CxPfCx4r4Jfy8cGec0.jpg" .
+
+:Film2422 a :Film ;
+    :hasTitle "Who Killed Santa? A Murderville Murder Mystery (2022)" ;
+    :hasDirector "Laura Murphy" ;
+    :hasReleaseDate "15. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy', 'Crime']" ;
+    :hasSinopsis "A holiday-hating detective is forced to solve a murder — and save Christmas — with help from famous trainees who must improv their way through the case." ;
+    :hasRating "8.3"^^xsd:decimal ;
+    :hasDuration "53 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/uO0EJVJmy2RC0YRgcvu8ETFBUZO.jpg" .
+
+:Film2423 a :Film ;
+    :hasTitle "Kangaroo Valley (2022)" ;
+    :hasDirector "Kylie Stott" ;
+    :hasReleaseDate "14. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Documentary']" ;
+    :hasSinopsis "Journey to a secret valley in Australia, where a nervous baby kangaroo named Mala faces hungry dingoes and winter snows in this coming-of-age adventure." ;
+    :hasRating "10"^^xsd:decimal ;
+    :hasDuration "76 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/q8T4Zp0b9hSSJkuavEYGF2h7omf.jpg" .
+
+:Film2424 a :Film ;
+    :hasTitle "Decibel (2022)" ;
+    :hasDirector "Hwang In-ho" ;
+    :hasReleaseDate "12. Nov, 2022" ;
+    :hasCountry "South Korea" ;
+    :hasGenres "['Action', 'Drama', 'Horror']" ;
+    :hasSinopsis "A former Naval officer with a dark past must face off against an insurgent with a sound sensitive bomb." ;
+    :hasRating "9.2"^^xsd:decimal ;
+    :hasDuration "110 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/eXN4DJn9f5ytbj1IDy3LIWR8O5L.jpg" .
+
+:Film2425 a :Film ;
+    :hasTitle "Mindcage (2022)" ;
+    :hasDirector "Mauro Borrelli" ;
+    :hasReleaseDate "16. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Crime', 'Drama', 'Mystery', 'Thriller']" ;
+    :hasSinopsis "Detectives Jake Doyle and Mary Kelly seek the help of an incarcerated serial killer named The Artist when a copycat killer strikes. While Mary searches for clues in The Artist’s brilliant but twisted psyche, she and Jake are lured into a diabolical game of cat and mouse, racing against time to stay one step ahead of The Artist and his copycat." ;
+    :hasRating "8"^^xsd:decimal ;
+    :hasDuration "107 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/JvqaHXdKBtEAmm4EDVTGkoAGIj.jpg" .
+
+:Film2426 a :Film ;
+    :hasTitle "Nanny (2022)" ;
+    :hasDirector "Nikyatu Jusu" ;
+    :hasReleaseDate "23. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Drama', 'Horror']" ;
+    :hasSinopsis "Aisha, an undocumented immigrant, lands a job as a nanny for a wealthy Manhattan couple. As she prepares for the arrival of the son she left behind in Senegal, a violent presence begins to invade both her dreams and her reality, threatening to destroy the American Dream she is painstakingly piecing together." ;
+    :hasRating "8.5"^^xsd:decimal ;
+    :hasDuration "98 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/mPhXHRudGxsXIQq1WM6oVePkFIp.jpg" .
+
+:Film2427 a :Film ;
+    :hasTitle "I Believe in Santa (2022)" ;
+    :hasDirector "Alex Ranarivelo" ;
+    :hasReleaseDate "14. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy', 'Romance']" ;
+    :hasSinopsis "Lisa thinks she’s finally met the man of her dreams until she finds out he still believes in Santa Claus." ;
+    :hasRating "7.2"^^xsd:decimal ;
+    :hasDuration "90 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/tcHe72gXZD0gyfWiHZrGEFfuULE.jpg" .
+
+:Film2428 a :Film ;
+    :hasTitle "Avatar: The Way of Water (2022)" ;
+    :hasDirector "James Cameron" ;
+    :hasReleaseDate "14. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Action', 'Adventure', 'Science Fiction']" ;
+    :hasSinopsis "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure." ;
+    :hasRating "9.4"^^xsd:decimal ;
+    :hasDuration "192 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" .
+
+:Film2429 a :Film ;
+    :hasTitle "The Banshees of Inisherin (2022)" ;
+    :hasDirector "Peter Kohn" ;
+    :hasReleaseDate "21. Oct, 2022" ;
+    :hasCountry "Ireland" ;
+    :hasGenres "['Comedy', 'Drama']" ;
+    :hasSinopsis "Two lifelong friends find themselves at an impasse when one abruptly ends their relationship, with alarming consequences for both of them." ;
+    :hasRating "9.1"^^xsd:decimal ;
+    :hasDuration "114 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/dCdYZtOZZTqXTyQFfw0i0W4K5Rv.jpg" .
+
+:Film2400 a :Film ;
+    :hasTitle "She Said (2022)" ;
+    :hasDirector "Maria Schrader" ;
+    :hasReleaseDate "17. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Drama', 'History']" ;
+    :hasSinopsis "New York Times reporters Megan Twohey and Jodi Kantor break one of the most important stories in a generation — a story that helped launch the #MeToo movement and shattered decades of silence around the subject of sexual assault in Hollywood." ;
+    :hasRating "8.2"^^xsd:decimal ;
+    :hasDuration "129 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/b2g0XtMU4zH2URSkx62n1aWTXTV.jpg" .
+
+:Film2401 a :Film ;
+    :hasTitle "God’s Creatures (2022)" ;
+    :hasDirector "Anna Rose Holmer" ;
+    :hasReleaseDate "30. Sep, 2022" ;
+    :hasCountry "Ireland" ;
+    :hasGenres "['Drama']" ;
+    :hasSinopsis "In a windswept fishing village, a mother is torn between protecting her beloved son and her own sense of right and wrong. A lie she tells for him rips apart their family and close-knit community." ;
+    :hasRating "8.5"^^xsd:decimal ;
+    :hasDuration "101 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/4xjkwZ8EwDzZ3dsQRvyW1fntqXT.jpg" .
+
+:Film2402 a :Film ;
+    :hasTitle "About Fate (2022)" ;
+    :hasDirector "Marius Weisberg" ;
+    :hasReleaseDate "08. Sep, 2022" ;
+    :hasCountry "Unknown" ;
+    :hasGenres "['Comedy', 'Romance']" ;
+    :hasSinopsis "Two strangers believe in love but never seem to be able to find its true meaning. In a wild twist of events, fate puts each in the other’s path on one stormy New Year’s Eve." ;
+    :hasRating "9.7"^^xsd:decimal ;
+    :hasDuration "100 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/fabZkaVHYJ67KbZx7oFoitauX34.jpg" .
+
+:Film2403 a :Film ;
+    :hasTitle "Mrs. Harris Goes to Paris (2022)" ;
+    :hasDirector "Anthony Fabian" ;
+    :hasReleaseDate "15. Jul, 2022" ;
+    :hasCountry "BE" ;
+    :hasGenres "['Comedy', 'Drama']" ;
+    :hasSinopsis "A 1950s London cleaning lady falls in love with an haute couture dress by Christian Dior and decides to gamble everything for the sake of this folly." ;
+    :hasRating "9.8"^^xsd:decimal ;
+    :hasDuration "116 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/eUg0HDLhTEDcXGBU2iK6QRBILv4.jpg" .
+
+:Film2404 a :Film ;
+    :hasTitle "Prey for the Devil (2022)" ;
+    :hasDirector "Daniel Stamm" ;
+    :hasReleaseDate "23. Oct, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Horror', 'Thriller']" ;
+    :hasSinopsis "In response to a global rise in demonic possessions, the Catholic Church reopens exorcism schools to train priests in the Rite of Exorcism. On this spiritual battlefield, an unlikely warrior rises: a young nun, Sister Ann. Thrust onto the spiritual frontline with fellow student Father Dante, Sister Ann finds herself in a battle for the soul of a young girl and soon realizes the Devil has her right where he wants her." ;
+    :hasRating "8.9"^^xsd:decimal ;
+    :hasDuration "93 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/w3s6XEDNVGq5LUlghqs6VlvsvL6.jpg" .
+
+:Film2405 a :Film ;
+    :hasTitle "Night at the Museum: Kahmunrah Rises Again (2022)" ;
+    :hasDirector "Matt Danner" ;
+    :hasReleaseDate "09. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Animation', 'Comedy', 'Family', 'Fantasy']" ;
+    :hasSinopsis "Nick Daley is following in his father’s footsteps as night watchman at the American Museum of Natural History, so he knows what happens when the sun goes down. But when the maniacal ruler Kahmunrah escapes, it is up to Nick to save the museum once and for all." ;
+    :hasRating "8"^^xsd:decimal ;
+    :hasDuration "77 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/rEy4VFXn3fukXRhx8TnSZtOnlcm.jpg" .
+
+:Film2406 a :Film ;
+    :hasTitle "Emancipation (2022)" ;
+    :hasDirector "Antoine Fuqua" ;
+    :hasReleaseDate "02. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Action', 'Drama', 'History', 'Mystery', 'Thriller']" ;
+    :hasSinopsis "Inspired by the gripping true story of a man who would do anything for his family—and for freedom. When Peter, an enslaved man, risks his life to escape and return to his family, he embarks on a perilous journey of love and endurance." ;
+    :hasRating "8.7"^^xsd:decimal ;
+    :hasDuration "132 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/s9sUK1vAaOcxJfKzNTszrNkPhkH.jpg" .
+
+:Film2407 a :Film ;
+    :hasTitle "D@bbe 6: The Return (2015)" ;
+    :hasDirector "Hasan Karacadag" ;
+    :hasReleaseDate "11. Sep, 2015" ;
+    :hasCountry "Turkey" ;
+    :hasGenres "['Horror']" ;
+    :hasSinopsis "A cardiologist tries to pinpoint the cause of her mother’s sudden death as her sister, who witnessed it, claims malevolent demons are at play. Dabbe" ;
+    :hasRating "8.7"^^xsd:decimal ;
+    :hasDuration "153 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/gn47EAAITuMv5eft8Zwae2bpukU.jpg" .
+
+:Film2408 a :Film ;
+    :hasTitle "D@bbe 5: Curse of the Jinn (2014)" ;
+    :hasDirector "Hasan Karacadag" ;
+    :hasReleaseDate "12. Sep, 2014" ;
+    :hasCountry "Turkey" ;
+    :hasGenres "['Horror']" ;
+    :hasSinopsis "Dilek, a housewife suddenly starts to feel presence of something abnormal in a specific room in their house. Though her husband, Omer refuses to agree with her but situation become worse. They find out that, an ancient paranormal creature called Jinn, has cursed on Dilek. They seek for a way to cure her but instead they find out some shocking event of Dilek’s early life. Dabbe" ;
+    :hasRating "7.4"^^xsd:decimal ;
+    :hasDuration "132 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/fzgebkYldfmmXCTSbpvIvru41VE.jpg" .
+
+:Film2409 a :Film ;
+    :hasTitle "D@bbe: The Possession (2013)" ;
+    :hasDirector "Hasan Karacadag" ;
+    :hasReleaseDate "02. Aug, 2013" ;
+    :hasCountry "Turkey" ;
+    :hasGenres "['Horror']" ;
+    :hasSinopsis "Preparing for her wedding, Kübra gets possessed by unknown livings. To cure Kübra, a psychiatrist, Ebru, gets on way. Ebru is also an old friend of Kübra. Ebru would work together with an exorcist to save Kübra. Just when things seemed to be going well, everything start going horribly wrong. Dabbe" ;
+    :hasRating "8.1"^^xsd:decimal ;
+    :hasDuration "134 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/j537aN6h9w06VipRHqFHnuFB1Ef.jpg" .
+
+:Film2410 a :Film ;
+    :hasTitle "Black Box (2021)" ;
+    :hasDirector "Yann Gozlan" ;
+    :hasReleaseDate "08. Sep, 2021" ;
+    :hasCountry "France" ;
+    :hasGenres "['Drama', 'Mystery', 'Thriller']" ;
+    :hasSinopsis "Matthieu is a young and talented black box analyst on a mission to solve the reason behind the deadly crash of a brand new aircraft. Yet, when the case is closed by authorities, Matthieu cannot help but sense there is something wrong with the evidence. As he listens to the tracks again, he starts detecting some seriously disturbing details. Could the tape have been modified? Going against his boss’ orders, Matthieu begins his own rogue investigation – an obsessional and dangerous quest for truth that will quickly threaten far more than his career…" ;
+    :hasRating "9.3"^^xsd:decimal ;
+    :hasDuration "130 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/gIYxQoxQC78kQBxIKCR41hheqwb.jpg" .
+
+:Film2411 a :Film ;
+    :hasTitle "Stutz (2022)" ;
+    :hasDirector "Jonah Hill" ;
+    :hasReleaseDate "14. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Documentary']" ;
+    :hasSinopsis "In candid conversations with actor Jonah Hill, leading psychiatrist Phil Stutz explores his early life experiences and unique, visual model of therapy." ;
+    :hasRating "9.6"^^xsd:decimal ;
+    :hasDuration "96 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/uOiJmotRM12wsgfwiEXsp3AErdU.jpg" .
+
+:Film2412 a :Film ;
+    :hasTitle "Armageddon Time (2022)" ;
+    :hasDirector "James Gray" ;
+    :hasReleaseDate "28. Oct, 2022" ;
+    :hasCountry "Brazil" ;
+    :hasGenres "['Drama']" ;
+    :hasSinopsis "In 1980, Queens, New York, a young Jewish boy befriends a rebellious African-American classmate to the disapproval of his privileged family and begins to reckon with growing up in a world of inequality and prejudice." ;
+    :hasRating "7"^^xsd:decimal ;
+    :hasDuration "114 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/2bVjSEaLsUxUZ4Dutz9qRF5zXyd.jpg" .
+
+:Film2413 a :Film ;
+    :hasTitle "One Day, You Will Reach the Sea (2022)" ;
+    :hasDirector "Ryutaro Nakagawa" ;
+    :hasReleaseDate "01. Apr, 2022" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Drama']" ;
+    :hasSinopsis "This work is a 12-year story of Mana, a woman who cannot accept the death of her best friend, staring at her as she tries to step forward while having deep sorrow." ;
+    :hasRating "7.8"^^xsd:decimal ;
+    :hasDuration "126 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/rAfDTOsvbJQKjgwaXAtRKdRTO6e.jpg" .
+
+:Film2414 a :Film ;
+    :hasTitle "Something from Tiffany’s (2022)" ;
+    :hasDirector "Daryl Wein" ;
+    :hasReleaseDate "29. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Comedy', 'Romance']" ;
+    :hasSinopsis "A woman’s life is upended when an engagement ring meant for someone else leads her to the person she’s meant to be with." ;
+    :hasRating "9.4"^^xsd:decimal ;
+    :hasDuration "87 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/hzQV66zQHqWKRjLVphISNOqadIp.jpg" .
+
+:Film2415 a :Film ;
+    :hasTitle "Guillermo del Toro’s Pinocchio (2022)" ;
+    :hasDirector "Guillermo del Toro" ;
+    :hasReleaseDate "09. Nov, 2022" ;
+    :hasCountry "France" ;
+    :hasGenres "['Animation', 'Drama', 'Fantasy', 'Music']" ;
+    :hasSinopsis "During the rise of fascism in Mussolini’s Italy, a wooden boy brought magically to life struggles to live up to his father’s expectations." ;
+    :hasRating "9.1"^^xsd:decimal ;
+    :hasDuration "117 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/vx1u0uwxdlhV2MUzj4VlcMB0N6m.jpg" .
+
+:Film2416 a :Film ;
+    :hasTitle "The Boss Baby: Christmas Bonus (2022)" ;
+    :hasDirector "Matt Engstrom" ;
+    :hasReleaseDate "06. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Adventure', 'Animation', 'Family']" ;
+    :hasSinopsis "Christmas Eve takes a twisty turn when the Boss Baby accidentally swaps places with one of Santa’s elves and gets stranded at the North Pole." ;
+    :hasRating "8.7"^^xsd:decimal ;
+    :hasDuration "47 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/iMmMxF6f2OonUrXrHKBLSYAhXly.jpg" .
+
+:Film2417 a :Film ;
+    :hasTitle "Fate/stay night: Heaven’s Feel III. Spring Song (2020)" ;
+    :hasDirector "Tomonori Sudo" ;
+    :hasReleaseDate "15. Aug, 2020" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Animation', 'Anime', 'Drama', 'Fantasy', 'Romance']" ;
+    :hasSinopsis "As Sakura drowns in the murky darkness of the sins she has committed, Shirou’s vow to protect her at all costs leads him into a raging battle to put an end to the Holy Grail War. Will Shirou’s wish reach Sakura even as he challenges fate itself in a desperate battle against the rising tide?" ;
+    :hasRating "10"^^xsd:decimal ;
+    :hasDuration "120 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/hIK5kEdFwOHnHTa06ntTVSfG9im.jpg" .
+
+:Film2418 a :Film ;
+    :hasTitle "Fate/stay night: Heaven’s Feel II. Lost Butterfly (2019)" ;
+    :hasDirector "Tomonori Sudo" ;
+    :hasReleaseDate "12. Jan, 2019" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Animation', 'Anime', 'Drama', 'Fantasy', 'Romance']" ;
+    :hasSinopsis "The Fifth Holy Grail War continues, and the ensuing chaos results in higher stakes for all participants. Shirou Emiya continues to participate in the war, aspiring to be a hero of justice who saves everyone. He sets out in search of the truth behind a mysterious dark shadow and its murder spree, determined to defeat it. Meanwhile, Shinji Matou sets his own plans into motion, threatening Shirou through his sister Sakura Matou. Shirou and Rin Tohsaka battle Shinji, hoping to relieve Sakura from the abuses of her brother. But the ugly truth of the Matou siblings begins to surface, and many dark secrets are exposed." ;
+    :hasRating "8.5"^^xsd:decimal ;
+    :hasDuration "117 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/4tS0iyKQBDFqVpVcH21MSJwXZdq.jpg" .
+
+:Film2419 a :Film ;
+    :hasTitle "Fate/stay night: Heaven’s Feel I. Presage Flower (2017)" ;
+    :hasDirector "Tomonori Sudo" ;
+    :hasReleaseDate "14. Oct, 2017" ;
+    :hasCountry "Japan" ;
+    :hasGenres "['Action', 'Animation', 'Anime', 'Drama', 'Fantasy', 'Romance']" ;
+    :hasSinopsis "Shiro Emiya is a young magus who attends Homurahara Academy in Fuyuki City. One day after cleaning the Archery Dojo in his school, he catches a glimpse of a fight between superhuman beings, and he gets involved in the Holy Grail War, a ritual where magi called Masters fight each other with their Servants to win the Holy Grail. Shiro joins the battle to stop an evildoer from winning the Grail and to save innocent people, but everything goes wrong when a mysterious “Shadow” begins to indiscriminately kill people in Fuyuki…" ;
+    :hasRating "8.8"^^xsd:decimal ;
+    :hasDuration "120 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/kVQCB189nshK97OKnJB3osOCdM7.jpg" .
+
+:Film2420 a :Film ;
+    :hasTitle "My Love (2021)" ;
+    :hasDirector "Tian Han" ;
+    :hasReleaseDate "30. Apr, 2021" ;
+    :hasCountry "China" ;
+    :hasGenres "['Drama', 'Drama Korea', 'Romance']" ;
+    :hasSinopsis "Tells the 15-year love story between Zhou Xiao Qi, a long-time swimming student and You Yong Ci, a transfer student. In high school, Zhou Xiao Qi fell in love at first sight with You Yong Ci. A young and ignorant pure love, the boy silently guarded, but the girl left without saying goodbye. Life after that, 15 years of love long-distance race. Your wedding is also my coming-of-age gift." ;
+    :hasRating "9.1"^^xsd:decimal ;
+    :hasDuration "115 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/yRJHKLW7oDEu0PZy9vbWEabqB1f.jpg" .
+
+:Film2421 a :Film ;
+    :hasTitle "A Wounded Fawn (2022)" ;
+    :hasDirector "Travis Stevens" ;
+    :hasReleaseDate "11. Jun, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Horror', 'Thriller']" ;
+    :hasSinopsis "A local museum curator who is dipping her toe back into the dating pool is targeted by a charming serial killer. When a fateful romantic getaway between the two becomes a tense game of cat and mouse, both must confront the madness within him." ;
+    :hasRating "7.5"^^xsd:decimal ;
+    :hasDuration "91 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/rE3szsbV1LyZtIfzJadqklnJO7l.jpg" .
+
+:Film2422 a :Film ;
+    :hasTitle "The Silent Forest (2020)" ;
+    :hasDirector "Chen-Nien Ko" ;
+    :hasReleaseDate "15. Oct, 2020" ;
+    :hasCountry "Taiwan" ;
+    :hasGenres "['Drama', 'Drama Korea']" ;
+    :hasSinopsis "Hearing-impaired teenager Chang Cheng transfers to a school for children with special needs. However, the world of the hearing-impaired doesn’t seem quiet at all. When Chang witnesses the game taking place in the last row on the school bus, his excitement about blending into a new environment immediately turns into fear." ;
+    :hasRating "9.2"^^xsd:decimal ;
+    :hasDuration "104 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/mzdEAxwkTCXBG1EKOblIkemQ6l8.jpg" .
+
+:Film2423 a :Film ;
+    :hasTitle "Remember (2022)" ;
+    :hasDirector "Lee Il-hyung" ;
+    :hasReleaseDate "26. Oct, 2022" ;
+    :hasCountry "South Korea" ;
+    :hasGenres "['Action', 'Thriller']" ;
+    :hasSinopsis "Pil-ju, a retired soldier in his 80s, has dementia and sets off in search of the people he believes responsible for the death of his family. With 5 names tattooed on his fingers and pieces of collapsing memories, Pil-ju tracks down his targets and kills them one by one. In-gyu, a young innocent man, becomes the prime suspect of a murder Pil-ju committed and tries to prove his innocence, and hopefully stop the old man’s revenge journey." ;
+    :hasRating "9.5"^^xsd:decimal ;
+    :hasDuration "128 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/lvEtTSshU47BCchwwU1Ej1PKsGn.jpg" .
+
+:Film2424 a :Film ;
+    :hasTitle "Warriors of Future (2022)" ;
+    :hasDirector "Ng Yuen-fai" ;
+    :hasReleaseDate "05. Aug, 2022" ;
+    :hasCountry "Hong Kong" ;
+    :hasGenres "['Action', 'Drama', 'Science Fiction']" ;
+    :hasSinopsis "When a meteor carrying a destructive plant strikes the world, a suicide squad is given hours to save their post-apocalyptic city from total collapse." ;
+    :hasRating "8.6"^^xsd:decimal ;
+    :hasDuration "101 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/2l9LbxBSkJseoxYcIJjclnmxyq.jpg" .
+
+:Film2425 a :Film ;
+    :hasTitle "Scrooge: A Christmas Carol (2022)" ;
+    :hasDirector "Stephen Donnelly" ;
+    :hasReleaseDate "18. Nov, 2022" ;
+    :hasCountry "United Kingdom" ;
+    :hasGenres "['Animation', 'Drama', 'Family', 'Fantasy']" ;
+    :hasSinopsis "On a cold Christmas Eve, selfish miser Ebenezer Scrooge has one night left to face his past — and change the future — before time runs out." ;
+    :hasRating "9.4"^^xsd:decimal ;
+    :hasDuration "97 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/nOrnzHn9SCF6JTXfX02eSPyAAXL.jpg" .
+
+:Film2426 a :Film ;
+    :hasTitle "Diary of a Wimpy Kid: Rodrick Rules (2022)" ;
+    :hasDirector "Luke Cormican" ;
+    :hasReleaseDate "02. Dec, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Animation', 'Comedy', 'Family']" ;
+    :hasSinopsis "A new school year, his brother Rodrick teases him over and over and over and over again. Will Greg manage to get along with him? Or will a secret ruin everything?" ;
+    :hasRating "9"^^xsd:decimal ;
+    :hasDuration "74 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/iW6ixzkrvdrcxk0umiLZMtlSl9L.jpg" .
+
+:Film2427 a :Film ;
+    :hasTitle "The Last Dolphin King (2022)" ;
+    :hasDirector "Ernest Riera" ;
+    :hasReleaseDate "13. Nov, 2022" ;
+    :hasCountry "France" ;
+    :hasGenres "['Documentary']" ;
+    :hasSinopsis "This documentary traces the career of renowned Spanish dolphin trainer José Luis Barbero and the events leading up to his shocking death in 2015." ;
+    :hasRating "9.7"^^xsd:decimal ;
+    :hasDuration "93 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/zgul86m3y9GpI3LT4fRYFQXB7FM.jpg" .
+
+:Film2428 a :Film ;
+    :hasTitle "Ghislaine Maxwell: Filthy Rich (2022)" ;
+    :hasDirector "Maiken Baird" ;
+    :hasReleaseDate "25. Nov, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Documentary']" ;
+    :hasSinopsis "Stories from survivors frame this documentary detailing the sex-trafficking trial of Ghislaine Maxwell, a socialite and accomplice of Jeffrey Epstein." ;
+    :hasRating "10"^^xsd:decimal ;
+    :hasDuration "101 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/i9vl0FxtPQaiTOMRoKYhEuu9xw3.jpg" .
+
+:Film2429 a :Film ;
+    :hasTitle "Lady Chatterley’s Lover (2022)" ;
+    :hasDirector "Laure de Clermont-Tonnerre" ;
+    :hasReleaseDate "02. Sep, 2022" ;
+    :hasCountry "United Kingdom" ;
+    :hasGenres "['Drama', 'Romance']" ;
+    :hasSinopsis "Unhappily married aristocrat Lady Chatterley begins a torrid affair — and falls deeply in love — with the gamekeeper on her husband’s country estate." ;
+    :hasRating "8.4"^^xsd:decimal ;
+    :hasDuration "126 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/aSgl2DxPG3DuQXoaHr500KeULmT.jpg" .
+
+:Film2400 a :Film ;
+    :hasTitle "Qala (2022)" ;
+    :hasDirector "Anvita Dutt" ;
+    :hasReleaseDate "24. Nov, 2022" ;
+    :hasCountry "India" ;
+    :hasGenres "['Drama']" ;
+    :hasSinopsis "Haunted by her past, a talented singer with a rising career copes with the pressure of success, a mother’s disdain and the voices of doubt within her." ;
+    :hasRating "9.6"^^xsd:decimal ;
+    :hasDuration "119 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/4d2xoBGXMpfeQ6QgpVI4qm34bKP.jpg" .
+
+:Film2401 a :Film ;
+    :hasTitle "Christmas Full of Grace (2022)" ;
+    :hasDirector "Pedro Antônio" ;
+    :hasReleaseDate "30. Nov, 2022" ;
+    :hasCountry "Brazil" ;
+    :hasGenres "['Comedy', 'Romance']" ;
+    :hasSinopsis "After discovering a betrayal, Carlinhos takes a fun stranger to accompany him on Christmas. But Graça proves to be a madwoman capable of bringing the traditional family home down." ;
+    :hasRating "8"^^xsd:decimal ;
+    :hasDuration "104 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/iHRphB4zfPTuUHVrbO2vTmCLuHO.jpg" .
+
+:Film2402 a :Film ;
+    :hasTitle "Love Destiny: The Movie (2022)" ;
+    :hasDirector "Adisorn Trisirikasem" ;
+    :hasReleaseDate "28. Jul, 2022" ;
+    :hasCountry "Thailand" ;
+    :hasGenres "['Comedy', 'Fantasy', 'Romance']" ;
+    :hasSinopsis "Destined couple, Bhop and Gaysorn, have their love and beliefs challenged in the midst of savage threats during the expansion of colonial rule." ;
+    :hasRating "8.9"^^xsd:decimal ;
+    :hasDuration "166 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/lkKf3i4jmxKENBX5qsdMIQOUnRh.jpg" .
+
+:Film2403 a :Film ;
+    :hasTitle "“Sr.” (2022)" ;
+    :hasDirector "Chris Smith" ;
+    :hasReleaseDate "02. Sep, 2022" ;
+    :hasCountry "USA" ;
+    :hasGenres "['Documentary']" ;
+    :hasSinopsis "A portrait of the life and career of Robert Downey, Sr., the visionary American director who set the standard for counterculture comedy in the ’60s and ’70s." ;
+    :hasRating "9.5"^^xsd:decimal ;
+    :hasDuration "89 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/p9de9ZKRn3XArB14OISiQR7ul79.jpg" .
+
+:Film2404 a :Film ;
+    :hasTitle "6/45 (2022)" ;
+    :hasDirector "Park Gyu-tae" ;
+    :hasReleaseDate "24. Aug, 2022" ;
+    :hasCountry "South Korea" ;
+    :hasGenres "['Comedy']" ;
+    :hasSinopsis "A comedy film about North and South Korean soldiers vying for a winning lotto ticket that crossed the demarcation line because of the strong wind." ;
+    :hasRating "9.7"^^xsd:decimal ;
+    :hasDuration "113 Min." ;
+    :hasImage "https://image.tmdb.org/t/p/w185/hYD06ezIZ5dhySVAgxK68y8Z3w3.jpg" .
+
