@@ -243,14 +243,14 @@
             <li>
               <div class="movie-card">
 
-                <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                <a href=".\movie-details.php?id=<?= $data->id ?>">
                   <figure class="card-banner">
-                    <img src="<?= $data->image ?>" alt="The Northman movie poster">
+                    <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
                   </figure>
                 </a>
 
                 <div class="title-wrapper">
-                  <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                  <a href=".\movie-details.php?id=<?= $data->id ?>">
                     <h3 class="card-title">
                       <?= $data->namaFilm ?>
                     </h3>
