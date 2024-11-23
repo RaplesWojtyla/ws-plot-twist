@@ -4,7 +4,7 @@
   $itemsPerPage = 20;
   $totalItems = getTotalFilms();
   $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
-  $keyword = isset($_POST['search']) ? $_POST['search'] : "";
+  $keyword = isset($_GET['search']) ? $_GET['search'] : "";
 ?>
 
 
@@ -163,9 +163,9 @@
 
           <!-- Search Bar -->
           <div class="search-bar">
-            <form method="POST">
+            <form method="GET">
               <input type="text" name="search" placeholder="Search for movies, TV shows, and more..."
-                class="search-input">
+                class="search-input" value="<?= htmlspecialchars($keyword) ?>">
               <button name="searchBtn" type="submit" class="search-button">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
@@ -236,7 +236,6 @@
           <ul class="movies-list">
 
             <?php
-            if (!isset($_GET['page'])) {
             $res = showFilm($keyword, $currentPage, $itemsPerPage);
             foreach ($res as $data) {
             ?>
@@ -280,71 +279,21 @@
 
               </div>
             </li>
-            <?php }} ?>
-          </ul>
-          <!-- Pagination -->
-          <?php
-          if (isset($_GET['page'])) {
-          $films = showFilm($keyword, $currentPage, $itemsPerPage);
-          ?>
-
-          <!-- Your existing movies-list code -->
-          <ul class="movies-list">
-            <?php foreach ($films as $data) { ?>
-              <li>
-              <div class="movie-card">
-
-                <a href=".\movie-details.php?Film=<?= $data->Film ?>">
-                  <figure class="card-banner">
-                    <img src="<?= $data->image ?>" alt="The Northman movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href=".\movie-details.php?Film=<?= $data->Film ?>">
-                    <h3 class="card-title">
-                      <?= $data->namaFilm ?>
-                    </h3>
-                  </a>
-
-                  <time datetime="2022">
-                    <?= $data->Tahun ?>
-                  </time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">HD</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT137M"><?= $data->duration ?></time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data><?= $data->rating ?></data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
             <?php } ?>
           </ul>
-          <?php } ?>
+          <!-- Pagination -->
 
           <!-- Updated pagination section -->
           <div class="pagination">
             <?php if ($paginationData['hasPrev']): ?>
-            <a href="?page=<?php echo ($currentPage - 1); ?>" class="pagination-btn prev">Previous</a>
+            <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn prev">Previous</a>
             <?php else: ?>
             <span class="pagination-btn prev disabled">Previous</span>
             <?php endif; ?>
 
             <span class="page-numbers">
               <?php for ($i = $paginationData['start']; $i <= $paginationData['end']; $i++): ?>
-              <a href="?page=<?php echo $i; ?>"
+              <a href="?page=<?= $i; ?>&search=<?= urlencode($keyword); ?>"
                 class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
                 data-page="<?php echo $i; ?>">
                 <?php echo $i; ?>
@@ -353,7 +302,7 @@
             </span>
 
             <?php if ($paginationData['hasNext']): ?>
-            <a href="?page=<?php echo ($currentPage + 1); ?>" class="pagination-btn next">Next</a>
+            <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
             <?php else: ?>
             <span class="pagination-btn next disabled">Next</span>
             <?php endif; ?>
