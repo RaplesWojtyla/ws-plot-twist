@@ -24,7 +24,8 @@ def scrape_film_details(driver, film_url):
     director_sect = soup.find("div", id="cast")
     director = director_sect.find("meta", itemprop="name")['content']
     release_date = soup.find('span', {'class': 'date'}).get_text(strip=True) if soup.find('span',{'class': 'date'}) else "N/A"
-    country = driver.find_element(By.CSS_SELECTOR, "div.extra > span.country").text if driver.find_element(By.CSS_SELECTOR, "div.extra > span.country") else "N/A"
+    country_elements = driver.find_elements(By.CSS_SELECTOR, "div.extra > span.country")
+    country = country_elements[0].text if country_elements else "N/A"
     div_genre = soup.find('div', class_='sgeneros')
     genres = [a.get_text(strip=True) for a in div_genre.find_all('a')] if div_genre else "N/A"
 
@@ -53,7 +54,7 @@ def scrape_film_details(driver, film_url):
     }
 
 
-# i = 797
+i = 2400
 
 
 def scrape_page(driver, rdf_file):
@@ -61,7 +62,7 @@ def scrape_page(driver, rdf_file):
     Fungsi untuk scrape data film dari halaman utama
     """
 
-    i = 1
+    global i
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # Temukan semua elemen <article> yang sesuai
     film_links = soup.find_all('article', class_='item movies')
@@ -100,19 +101,19 @@ def scrape_page(driver, rdf_file):
         rdf_file.write(f'    :hasCountry "{film_data["Country"]}" ;\n')
         rdf_file.write(f'    :hasGenres "{film_data["Genres"]}" ;\n')
         rdf_file.write(f'    :hasSinopsis "{film_data["Sinopsis"]}" ;\n')
-        rdf_file.write(f'    :hasRating "{film_data["Rating"]}" ;\n')
+        rdf_file.write(f'    :hasRating "{film_data["Rating"]}"^^xsd:decimal ;\n')
         rdf_file.write(f'    :hasDuration "{film_data["Duration"]}" ;\n')
         rdf_file.write(f'    :hasImage "{film_data["Image URL"]}" .\n\n')
+        i+=1
 
-
-def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
+def scrape_all_pages(driver, start_url, max_pages, rdf_output="patragay.ttl"):
     """
     Fungsi untuk scrape seluruh halaman dan menyimpan data dalam file RDF
     """
     driver.get(start_url)
-    time.sleep(10)
+    time.sleep(6)
     # current_page = 105  # halaman terakhir scraping 20 11 2024
-    current_page = 1
+    current_page = 76
 
     with open(rdf_output, 'w', encoding='utf-8') as rdf_file:
         # Menulis header RDF
@@ -126,7 +127,6 @@ def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
         rdf_file.write("          rdfs:domain :Film ;\n")
         rdf_file.write("          rdfs:range xsd:string .\n\n")
 
-        rdf_file.write(":Film rdf:type rdf:Class .\n")
         rdf_file.write(":hasDirector rdf:type rdf:Property ;\n")
         rdf_file.write("          rdfs:domain :Film ;\n")
         rdf_file.write("          rdfs:range xsd:string .\n\n")
@@ -149,7 +149,7 @@ def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
 
         rdf_file.write(":hasRating rdf:type rdf:Property ;\n")
         rdf_file.write("             rdfs:domain :Film ;\n")
-        rdf_file.write("             rdfs:range xsd:string .\n\n")
+        rdf_file.write("             rdfs:range xsd:decimal .\n\n")
 
         rdf_file.write(":hasDuration rdf:type rdf:Property ;\n")
         rdf_file.write("             rdfs:domain :Film ;\n")
@@ -165,7 +165,7 @@ def scrape_all_pages(driver, start_url, max_pages, rdf_output="movies13.ttl"):
 
             # Scrape data di halaman saat ini
             scrape_page(driver, rdf_file)
-            time.sleep(10)
+            time.sleep(6)
             try:
                 # pindah ke halaman berikutnya
                 current_page += 1
@@ -183,7 +183,7 @@ if __name__ == "__main__":
     driver = webdriver.Chrome()
 
     try:
-        start_url = "https://tv2.idlix.asia/movie/page/2"
-        scrape_all_pages(driver, start_url, max_pages=108)
+        start_url = "https://tv2.idlix.asia/movie/page/76"
+        scrape_all_pages(driver, start_url, max_pages=100)
     finally:
         driver.quit()
