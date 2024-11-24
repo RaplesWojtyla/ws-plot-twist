@@ -1,10 +1,10 @@
 <?php
   include './inc/func.php';
   $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-  $itemsPerPage = 20;
-  $totalItems = getTotalFilms();
-  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
   $keyword = isset($_GET['search']) ? $_GET['search'] : "";
+  $totalItems = getTotalFilms($keyword);
+  $itemsPerPage = 20;
+  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
 ?>
 
 
@@ -243,14 +243,14 @@
             <li>
               <div class="movie-card">
 
-                <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                <a href=".\movie-details.php?id=<?= $data->id ?>">
                   <figure class="card-banner">
-                    <img src="<?= $data->image ?>" alt="The Northman movie poster">
+                    <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
                   </figure>
                 </a>
 
                 <div class="title-wrapper">
-                  <a href=".\movie-details.php?Film=<?= $data->Film ?>">
+                  <a href=".\movie-details.php?id=<?= $data->id ?>">
                     <h3 class="card-title">
                       <?= $data->namaFilm ?>
                     </h3>
@@ -302,7 +302,7 @@
             </span>
 
             <?php if ($paginationData['hasNext']): ?>
-            <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
+            <a href="?page=<?= ($currentPage + 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
             <?php else: ?>
             <span class="pagination-btn next disabled">Next</span>
             <?php endif; ?>
