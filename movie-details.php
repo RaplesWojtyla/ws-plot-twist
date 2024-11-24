@@ -1,3 +1,15 @@
+<?php
+include "./inc/func.php";
+
+if (isset($_GET['id'])) {
+  $filmId = $_GET['id'];
+}
+$data = showDetail($filmId);
+$genre = $data->genre;
+$direktor = $data->direktor;
+$id = $data->id;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +17,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Guy 2021</title>
+  <title>Plot-Twist</title>
 
   <!-- 
     - favicon
@@ -36,7 +48,7 @@
 
       <div class="overlay" data-overlay></div>
 
-      <a href="./index.html" class="logo">
+      <a href="./index.php" class="logo">
         <img src="./assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
@@ -156,93 +168,79 @@
 
       <section class="movie-detail">
         <div class="container">
-
           <figure class="movie-detail-banner">
-
-            <img src="./assets/images/movie-4.png" alt="Free guy movie poster">
-
+            <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
             <button class="play-btn">
               <ion-icon name="play-circle-outline"></ion-icon>
             </button>
-
           </figure>
-
           <div class="movie-detail-content">
-
-            <p class="detail-subtitle">New Episodes</p>
-
-            <h1 class="h1 detail-title">
-              Free <strong>Guy</strong>
-            </h1>
-
+            <h2 class="h2 detail-title">
+              <?= $data->namaFilm ?>
+            </h2>
             <div class="meta-wrapper">
-
               <div class="badge-wrapper">
-                <div class="badge badge-fill">PG 13</div>
-
-                <div class="badge badge-outline">HD</div>
+                <div class="badge badge-outline"><?= $data->country ?></div>
+                <div class="badge badge-fill">HD</div>
               </div>
-
-              <div class="ganre-wrapper">
-                <a href="#">Comedy,</a>
-
-                <a href="#">Action,</a>
-
-                <a href="#">Adventure,</a>
-
-                <a href="#">Science Fiction</a>
-              </div>
-
               <div class="date-time">
-
                 <div>
                   <ion-icon name="calendar-outline"></ion-icon>
-
-                  <time datetime="2021">2021</time>
+                  <time datetime="2021"><?= $data->rilis ?></time>
                 </div>
-
                 <div>
                   <ion-icon name="time-outline"></ion-icon>
-
-                  <time datetime="PT115M">115 min</time>
+                  <time datetime="PT115M"><?= $data->duration ?></time>
                 </div>
+                <div>
+                  <ion-icon name="star"></ion-icon>
+                  <data><?= $data->rating ?></data>
+                </div>
+              </div>
+            </div>
+            <div class="meta-wrapper">
 
+              <div class="ganre-wrapper">
+                <!-- <a href="#">Comedy,</a>
+                <a href="#">Action,</a>
+                <a href="#">Adventure,</a>
+                <a href="#">Science Fiction</a> -->
+                <a href="#">
+                  <?= $data->genre ?>
+                </a>
               </div>
 
             </div>
-
             <p class="storyline">
-              A bank teller called Guy realizes he is a background character in an open world video game called Free
-              City that will
-              soon go offline.
+              <?= $data->sinopsis ?>
             </p>
+            <div class="meta-wrapper">
+              <h3 class="h3 detail-title">
+                Directed By
+                <a href="#">
+                  <?= $data->direktor ?>
+                </a>
+              </h3>
+            </div>
 
-            <div class="details-actions">
-
+            <!-- <div class="details-actions">
               <button class="share">
                 <ion-icon name="share-social"></ion-icon>
-
                 <span>Share</span>
               </button>
-
               <div class="title-wrapper">
                 <p class="title">Prime Video</p>
-
                 <p class="text">Streaming Channels</p>
               </div>
-
               <button class="btn btn-primary">
                 <ion-icon name="play"></ion-icon>
-
                 <span>Watch Now</span>
               </button>
-              
-            </div> 
-              <ion-icon name="download-outline"></ion-icon>
-            </a>
+            </div>  -->
+            <!-- <ion-icon name="download-outline"></ion-icon> -->
+            <!-- </a> -->
 
           </div>
-
         </div>
       </section>
 
@@ -257,194 +255,57 @@
       <section class="tv-series">
         <div class="container">
 
-          <p class="section-subtitle">Best TV Series</p>
+          <!-- <p class="section-subtitle">Best TV Series</p> -->
 
-          <h2 class="h2 section-title">World Best TV Series</h2>
+          <h2 class="h2 section-title">FILM LAINNYA</h2>
 
           <ul class="movies-list has-scrollbar">
+            <?php
+              $res = showAnotherLikeFilm($genre, $direktor, $id);
+              foreach ($res as $data) {
+            ?>
+              <li>
+                <div class="movie-card">
 
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="./assets/images/series-1.png" alt="Moon Knight movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Moon Knight</h3>
+                  <a href=".\movie-details.php?id=<?= $data->id ?>">
+                    <figure class="card-banner">
+                      <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
+                    </figure>
                   </a>
 
-                  <time datetime="2022">2022</time>
-                </div>
+                  <div class="title-wrapper">
+                    <a href=".\movie-details.php?id=<?= $data->id ?>">
+                      <h3 class="card-title">
+                        <?= $data->namaFilm ?>
+                      </h3>
+                    </a>
 
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT47M">47 min</time>
+                    <time datetime="2022">
+                      <?= $data->tahun ?>
+                    </time>
                   </div>
 
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
+                  <div class="card-meta">
+                    <div class="badge badge-outline">HD</div>
 
-                    <data>8.6</data>
-                  </div>
-                </div>
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
 
-              </div>
-            </li>
+                      <time datetime="PT137M"><?= $data->duration ?></time>
+                    </div>
 
-            <li>
-              <div class="movie-card">
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
 
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="./assets/images/series-2.png" alt="Halo movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Halo</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT59M">59 min</time>
+                      <data><?= $data->rating ?></data>
+                    </div>
                   </div>
 
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.8</data>
-                  </div>
                 </div>
+              </li>
 
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="./assets/images/series-3.png" alt="Vikings: Valhalla movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Vikings: Valhalla</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT51M">51 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.3</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="./assets/images/series-4.png" alt="Money Heist movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Money Heist</h3>
-                  </a>
-
-                  <time datetime="2017">2017</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">4K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT70M">70 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.3</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-            
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="./assets/images/series-4.png" alt="Money Heist movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Money Heist</h3>
-                  </a>
-
-                  <time datetime="2017">2017</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">4K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT70M">70 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.3</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
+            <?php } ?>
           </ul>
-
         </div>
       </section>
 

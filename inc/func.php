@@ -23,8 +23,9 @@ function showFilm($keyword, $page, $itemsPerPage) {
     $offset = ($page - 1) * $itemsPerPage;
     
     $query = "
-    SELECT ?Film ?namaFilm ?rating ?image ?duration ?Tahun
+    SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?Tahun
     WHERE {
+        ?Film fil:hasId ?id .
         ?Film fil:hasTitle ?namaFilm .
         ?Film fil:hasRating ?rating .
         ?Film fil:hasImage ?image .
@@ -80,4 +81,50 @@ function generatePaginationData($currentPage, $totalItems, $itemsPerPage) {
         'hasPrev' => $currentPage > 1
     ];
 }
+
+function showDetail($id) {
+    
+    $query = "
+    SELECT ?Film ?id ?rilis ?country ?direktor ?namaFilm ?genre ?rating ?image ?duration ?tahun ?sinopsis
+    WHERE {
+        ?Film fil:hasTitle ?namaFilm .
+        ?Film fil:hasGenres ?genre .
+        ?Film fil:hasRating ?rating .
+        ?Film fil:hasImage ?image .
+        ?Film fil:hasDuration ?duration .
+        ?Film fil:hasYear ?tahun .
+        ?Film fil:hasId ?id .
+        ?Film fil:hasReleaseDate ?rilis .
+        ?Film fil:hasSinopsis ?sinopsis .
+        ?Film fil:hasCountry ?country .
+        ?Film fil:hasDirector ?direktor .
+
+        FILTER (?id = $id)
+    }
+    ";
+    return query($query)->current();
+}
+
+function showAnotherLikeFilm($genre , $direktor , $id) {
+    
+    $query = "
+    SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?tahun 
+    WHERE {
+        ?Film fil:hasTitle ?namaFilm .
+        ?Film fil:hasRating ?rating .
+        ?Film fil:hasImage ?image .
+        ?Film fil:hasDuration ?duration .
+        ?Film fil:hasYear ?tahun .
+        ?Film fil:hasId ?id .
+        ?Film fil:hasDirector ?direktor .
+        ?Film fil:hasGenres ?genre .
+
+        FILTER (regex(?direktor , '$direktor' , 'i') && (?id != $id))
+    }LIMIT 8
+    ";
+    return query($query);
+    
+}
+
+
 ?>
