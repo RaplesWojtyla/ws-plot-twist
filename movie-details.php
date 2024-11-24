@@ -5,7 +5,10 @@ if (isset($_GET['id'])) {
   $filmId = $_GET['id'];
 }
 $data = showDetail($filmId);
-$genre = $data->genre;
+$genresStr = trim($data->genre, "[]");
+$genresStr = str_replace("'", "", $genresStr);
+$genres = explode(",", $genresStr);
+
 $direktor = $data->direktor;
 $id = $data->id;
 ?>
@@ -82,7 +85,7 @@ $id = $data->id;
 
         <div class="navbar-top">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
@@ -95,7 +98,7 @@ $id = $data->id;
         <ul class="navbar-list">
 
           <li>
-            <a href="./index.html" class="navbar-link">Home</a>
+            <a href="./index.php" class="navbar-link">Home</a>
           </li>
 
           <li>
@@ -205,9 +208,13 @@ $id = $data->id;
                 <a href="#">Action,</a>
                 <a href="#">Adventure,</a>
                 <a href="#">Science Fiction</a> -->
+                <?php foreach($genres as $genre) { ?>
+
                 <a href="#">
-                  <?= $data->genre ?>
+                  <?= $genre ?>
                 </a>
+
+                <?php } ?>
               </div>
 
             </div>
@@ -261,7 +268,7 @@ $id = $data->id;
 
           <ul class="movies-list has-scrollbar">
             <?php
-              $res = showAnotherLikeFilm($genre, $direktor, $id);
+              $res = showAnotherLikeFilm($direktor, $id);
               foreach ($res as $data) {
             ?>
               <li>
@@ -327,14 +334,14 @@ $id = $data->id;
 
         <div class="footer-brand-wrapper">
 
-          <a href="./index.html" class="logo">
+          <a href="./index.php" class="logo">
             <img src="./assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
           <ul class="footer-list">
 
             <li>
-              <a href="./index.html" class="footer-link">Home</a>
+              <a href="./index.php" class="footer-link">Home</a>
             </li>
 
             <li>
