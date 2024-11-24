@@ -1,10 +1,10 @@
 <?php
   include './inc/func.php';
   $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-  $itemsPerPage = 20;
-  $totalItems = getTotalFilms();
-  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
   $keyword = isset($_GET['search']) ? $_GET['search'] : "";
+  $totalItems = getTotalFilms($keyword);
+  $itemsPerPage = 20;
+  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
 ?>
 
 
@@ -302,7 +302,7 @@
             </span>
 
             <?php if ($paginationData['hasNext']): ?>
-            <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
+            <a href="?page=<?= ($currentPage + 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
             <?php else: ?>
             <span class="pagination-btn next disabled">Next</span>
             <?php endif; ?>

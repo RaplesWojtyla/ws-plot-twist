@@ -4,22 +4,14 @@ require './vendor/autoload.php';
 \EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 \EasyRdf\RdfNamespace::set('fil', 'http://example.org/movie#');
 
-function query($query) {
+function query($query) 
+{
     $sparql_jena = new \EasyRdf\Sparql\Client("http://localhost:3030/plot-twist/sparql");
     return $sparql_jena->query($query);
 }
 
-// function search($input) {
-//     $query = "
-//     SELECT ?Film WHERE {
-//         ?Film fil:hasTitle ?namaFilm.
-//         FILTER (regex(?namaFilm, \"$input\", 'i'))
-//     }";
-//     return query($query);
-// }
-
-function showFilm($keyword, $page, $itemsPerPage) {
-    // Calculate offset
+function showFilm($keyword, $page, $itemsPerPage) 
+{
     $offset = ($page - 1) * $itemsPerPage;
     
     $query = "
@@ -44,22 +36,34 @@ function showFilm($keyword, $page, $itemsPerPage) {
     return query($query);
 }
 
-function getTotalFilms() {
+function getTotalFilms($keyword) 
+{
     $query = "
     SELECT (COUNT(?Film) as ?count)
     WHERE {
         ?Film fil:hasTitle ?namaFilm .
+        ?Film fil:hasYear ?Tahun .
+        ?Film fil:hasDirector ?director .
+
+        FILTER(
+			   REGEX(?namaFilm, '$keyword', 'i') ||
+               REGEX(?Tahun, '$keyword', 'i') ||
+               REGEX(?director, '$keyword', 'i')
+        ) .
     }";
     
     $result = query($query);
+
     foreach ($result as $row) {
         return $row->count->getValue();
     }
+
     return 0;
 }
 
 // Pagination helper function
-function generatePaginationData($currentPage, $totalItems, $itemsPerPage) {
+function generatePaginationData($currentPage, $totalItems, $itemsPerPage) 
+{
     $totalPages = ceil($totalItems / $itemsPerPage);
     $currentPage = max(1, min($currentPage, $totalPages));
     
@@ -82,7 +86,8 @@ function generatePaginationData($currentPage, $totalItems, $itemsPerPage) {
     ];
 }
 
-function showDetail($id) {
+function showDetail($id) 
+{
     
     $query = "
     SELECT ?Film ?id ?rilis ?country ?direktor ?namaFilm ?genre ?rating ?image ?duration ?tahun ?sinopsis
@@ -100,12 +105,14 @@ function showDetail($id) {
         ?Film fil:hasDirector ?direktor .
 
         FILTER (?id = $id)
-    }
+    } #GROUP BY ?Film ?id ?rilis ?country ?direktor ?namaFilm ?rating ?image ?duration ?tahun ?sinopsis
     ";
+
     return query($query)->current();
 }
 
-function showAnotherLikeFilm($genre , $direktor , $id) {
+function showAnotherLikeFilm($direktor, $id, $genres=[]) 
+{
     
     $query = "
     SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?tahun 
@@ -122,9 +129,8 @@ function showAnotherLikeFilm($genre , $direktor , $id) {
         FILTER (regex(?direktor , '$direktor' , 'i') && (?id != $id))
     }LIMIT 8
     ";
-    return query($query);
-    
-}
 
+    return query($query);
+}
 
 ?>
