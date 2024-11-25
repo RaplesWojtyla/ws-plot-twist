@@ -25,11 +25,14 @@ function showFilm($keyword, $page, $itemsPerPage)
         ?Film fil:hasYear ?Tahun .
         ?Film fil:hasDirector ?director .
         ?Film fil:hasCountry ?country .
+        ?Film fil:hasGenres ?genre .
+
 
 		FILTER(REGEX(?namaFilm, '$keyword', 'i') ||
 			   REGEX(?Tahun, '$keyword', 'i') ||
                REGEX(?director, '$keyword', 'i') ||
-               REGEX(?country, '$keyword', 'i')
+               REGEX(?country, '$keyword', 'i') ||
+               REGEX(?genre, '$keyword', 'i') 
                 ) .
     }
     ORDER BY ?namaFilm
@@ -48,12 +51,14 @@ function getTotalFilms($keyword)
         ?Film fil:hasYear ?Tahun .
         ?Film fil:hasDirector ?director .
         ?Film fil:hasCountry ?country .
+        ?Film fil:hasGenres ?genre .
 
         FILTER(
 			   REGEX(?namaFilm, '$keyword', 'i') ||
                REGEX(?Tahun, '$keyword', 'i') ||
                REGEX(?director, '$keyword', 'i') ||
-               REGEX(?country, '$keyword', 'i')
+               REGEX(?country, '$keyword', 'i')||
+               REGEX(?genre, '$keyword', 'i') 
         ) .
     }";
     
