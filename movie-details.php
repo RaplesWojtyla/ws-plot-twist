@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
 $data = showDetail($filmId);
 $genresStr = trim($data->genre, "[]");
 $genresStr = str_replace("'", "", $genresStr);
-$genres = explode(",", $genresStr);
+$genres = explode(", ", $genresStr);
 
 $direktor = $data->direktor;
 $id = $data->id;
@@ -183,7 +183,9 @@ $id = $data->id;
             </h2>
             <div class="meta-wrapper">
               <div class="badge-wrapper">
-                <div class="badge badge-outline"><?= $data->country ?></div>
+                <a href="./index.php?search=<?= $data->country ?>">
+                  <div class="badge badge-outline"><?= $data->country ?></div>
+                </a>
                 <div class="badge badge-fill">HD</div>
               </div>
               <div class="date-time">
@@ -210,8 +212,8 @@ $id = $data->id;
                 <a href="#">Science Fiction</a> -->
                 <?php foreach($genres as $genre) { ?>
 
-                <a href="#">
-                  <?= $genre ?>
+                <a href="./index.php?search=<?=preg_replace("![^a-z0-9]+!i", "+", $genre)?>">
+                  <?=$genre?>
                 </a>
 
                 <?php } ?>
@@ -224,7 +226,7 @@ $id = $data->id;
             <div class="meta-wrapper">
               <h3 class="h3 detail-title">
                 Directed By
-                <a href="#">
+                <a href="./index.php?search=<?= $data->direktor ?>">
                   <?= $data->direktor ?>
                 </a>
               </h3>
