@@ -55,27 +55,6 @@ $id = $data->id;
         <img src="./assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
-      <div class="header-actions">
-
-        <button class="search-btn">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-
-        <div class="lang-wrapper">
-          <label for="language">
-            <ion-icon name="globe-outline"></ion-icon>
-          </label>
-
-          <select name="language" id="language">
-            <option value="en">EN</option>
-            <option value="au">AU</option>
-            <option value="ar">AR</option>
-            <option value="tu">TU</option>
-          </select>
-        </div>
-
-
-      </div>
 
       <button class="menu-open-btn" data-menu-open-btn>
         <ion-icon name="reorder-two"></ion-icon>
@@ -98,10 +77,10 @@ $id = $data->id;
         <ul class="navbar-list">
 
           <li>
-            <a href="./index.php" class="navbar-link">Home</a>
+            <a href="./index.php" class="navbar-link">Back to Home</a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="#" class="navbar-link">Movie</a>
           </li>
 
@@ -115,41 +94,7 @@ $id = $data->id;
 
           <li>
             <a href="#" class="navbar-link">Pricing</a>
-          </li>
-
-        </ul>
-
-        <ul class="navbar-social-list">
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-pinterest"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-social-link">
-              <ion-icon name="logo-youtube"></ion-icon>
-            </a>
-          </li>
+          </li> -->
 
         </ul>
 
@@ -173,9 +118,6 @@ $id = $data->id;
         <div class="container">
           <figure class="movie-detail-banner">
             <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
-            <button class="play-btn">
-              <ion-icon name="play-circle-outline"></ion-icon>
-            </button>
           </figure>
           <div class="movie-detail-content">
             <h2 class="h2 detail-title">
