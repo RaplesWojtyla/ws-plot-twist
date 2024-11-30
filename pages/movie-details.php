@@ -1,5 +1,5 @@
 <?php
-include "./inc/func.php";
+include "../inc/func.php";
 
 if (isset($_GET['id'])) {
   $filmId = $_GET['id'];
@@ -30,7 +30,7 @@ $id = $data->id;
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 
   <!-- 
     - google font link
@@ -51,8 +51,8 @@ $id = $data->id;
 
       <div class="overlay" data-overlay></div>
 
-      <a href="./index.php" class="logo">
-        <img src="./assets/images/logo.svg" alt="Filmlane logo">
+      <a href="../index.php" class="logo">
+        <img src="../assets/images/logo.svg" alt="Filmlane logo">
       </a>
 
 
@@ -77,7 +77,7 @@ $id = $data->id;
         <ul class="navbar-list">
 
           <li>
-            <a href="./index.php" class="navbar-link">Back to Home</a>
+            <a href="../index.php" class="navbar-link">Back to Home</a>
           </li>
 
           <!-- <li>
@@ -154,7 +154,7 @@ $id = $data->id;
                 <a href="#">Science Fiction</a> -->
                 <?php foreach($genres as $genre) { ?>
 
-                <a href="./index.php?search=<?=preg_replace("![^a-z0-9]+!i", "+", $genre)?>">
+                <a href="../index.php?search=<?=preg_replace("![^a-z0-9]+!i", "+", $genre)?>">
                   <?=$genre?>
                 </a>
 
@@ -168,7 +168,7 @@ $id = $data->id;
             <div class="meta-wrapper">
               <h3 class="h3 detail-title">
                 Directed By
-                <a href="./index.php?search=<?= $data->direktor ?>">
+                <a href="../index.php?search=<?= $data->direktor ?>">
                   <?= $data->direktor ?>
                 </a>
               </h3>
@@ -278,8 +278,8 @@ $id = $data->id;
 
         <div class="footer-brand-wrapper">
 
-          <a href="./index.php" class="logo">
-            <img src="./assets/images/logo.svg" alt="Filmlane logo">
+          <a href="../index.php" class="logo">
+            <img src="../assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
         </div>

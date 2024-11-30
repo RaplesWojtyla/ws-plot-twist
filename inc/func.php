@@ -1,5 +1,5 @@
 <?php
-require './vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 \EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 \EasyRdf\RdfNamespace::set('fil', 'http://example.org/movie#');
@@ -42,6 +42,22 @@ function showFilm($keyword, $page, $itemsPerPage)
     return query($query);
 }
 
+function searchByTitle($keyword, $limit) 
+{
+    $query = "
+    SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?Tahun
+    WHERE {
+        ?Film fil:hasId ?id .
+        ?Film fil:hasTitle ?namaFilm .
+
+		FILTER(CONTAINS(LCASE(?namaFilm), LCASE('$keyword')) ) .
+    }
+    ORDER BY ?namaFilm
+    LIMIT " . $limit;
+
+    return query($query);
+}
+
 function getTotalFilms($keyword) 
 {
     $query = "
@@ -57,8 +73,8 @@ function getTotalFilms($keyword)
 			   REGEX(?namaFilm, '$keyword', 'i') ||
                REGEX(?Tahun, '$keyword', 'i') ||
                REGEX(?director, '$keyword', 'i') ||
-               REGEX(?country, '$keyword', 'i')||
-               REGEX(?genre, '$keyword', 'i') 
+               REGEX(?country, '$keyword', 'i') ||
+               CONTAINS(?genre, '$keyword') 
         ) .
     }";
     
@@ -79,11 +95,11 @@ function generatePaginationData($currentPage, $totalItems, $itemsPerPage)
     
     // Calculate the range of page numbers to show
     $start = max(1, $currentPage - 1);
-    $end = min($start + 2, $totalPages);
+    $end = min($start + 4, $totalPages);
     
     // Adjust start if we're near the end
-    if ($end - $start < 2) {
-        $start = max(1, $end - 2);
+    if ($end - $start < 4) {
+        $start = max(1, $end - 4);
     }
     
     return [
@@ -121,7 +137,7 @@ function showDetail($id)
     return query($query)->current();
 }
 
-function showAnotherLikeFilm($direktor, $id, $genres=[]) 
+function showAnotherLikeFilm($direktor, $id, $genres="") 
 {
     
     $query = "

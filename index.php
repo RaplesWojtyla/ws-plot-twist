@@ -1,5 +1,5 @@
 <?php
-  include './inc/func.php';
+  require './inc/func.php';
   $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
   $keyword = isset($_GET['search']) ? $_GET['search'] : "";
   $totalItems = getTotalFilms($keyword);
@@ -148,13 +148,14 @@
           <!-- Search Bar -->
           <div class="search-bar">
             <form method="GET">
-              <input type="text" name="search" placeholder="Search for movies, TV shows, and more..."
+              <input type="text" name="search" id="search" placeholder="Search for movies, TV shows, and more..."
                 class="search-input" value="<?= htmlspecialchars($keyword) ?>">
               <button name="searchBtn" type="submit" class="search-button">
                 <ion-icon name="search-outline"></ion-icon>
               </button>
             </form>
           </div>
+          <div id="search-results"></div>
         </div>
       </section>
 
@@ -186,21 +187,21 @@
                   <li><a href="#">Drama</a></li>
                   <li><a href="#">Horror</a></li>
                   <li><a href="#">Romance</a></li>
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Comedy</a></li>
+                  <li><a href="#">Adventure</a></li>
+                  <li><a href="#">Thriller</a></li>
+                  <li><a href="#">Mystery</a></li>
+                  <li><a href="#">Science Fiction</a></li>
+                  <li><a href="#">History</a></li>
+                  <li><a href="#">Family</a></li>
+                  <li><a href="#">Animation</a></li>
+                  <li><a href="#">Crime</a></li>
+                  <li><a href="#">War</a></li>
+                  <li><a href="#">Anime</a></li>
+                  <li><a href="#">Music</a></li>
+                  <li><a href="#">Western</a></li>
                   <li><a href="#">Drama</a></li>
-                  <li><a href="#">Horror</a></li>
-                  <li><a href="#">Romance</a></li>
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Comedy</a></li>
-                  <li><a href="#">Drama</a></li>
-                  <li><a href="#">Horror</a></li>
-                  <li><a href="#">Romance</a></li>
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Comedy</a></li>
-                  <li><a href="#">Drama</a></li>
-                  <li><a href="#">Horror</a></li>
-                  <li><a href="#">Romance</a></li>
+                  <li><a href="#">Documentary</a></li>
+                  <li><a href="#">Kids</a></li>
                 </ul>
               </li>
 
@@ -227,7 +228,7 @@
             <li>
               <div class="movie-card">
 
-                <a href=".\movie-details.php?id=<?= $data->id ?>">
+                <a href=".\pages\movie-details.php?id=<?= $data->id ?>">
                   <figure class="card-banner">
                     <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
                   </figure>
@@ -334,7 +335,40 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+      $('#search').on('input', function() {
+          var keyword = $(this).val();
+          if (keyword.length > 1) {
+              $.ajax({
+                  url: './ajax/search.php',
+                  type: 'GET',
+                  data: { keyword: keyword },
+                  success: function(data) {
+                      $('#search-results').html(data);
+                  }
+              });
+          } else {
+              $('#search-results').empty();
+          }
+      });
+  });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#dropdownMenu li').on('click', function() {
+        var genre = $(this).text().trim();
 
+        searchByGenre(genre);
+      });
+    });
+
+    function searchByGenre(genre) {
+      console.log('Searching for genre:', genre); // Tes output
+      window.location.href = 'index.php?search=' + encodeURIComponent(genre);
+    }
+  </script>
 </body>
 
 </html>
