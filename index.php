@@ -51,14 +51,10 @@
 
       <div class="header-actions">
 
-        <button class="search-btn">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
+
 
         <div class="lang-wrapper">
-          <label for="language">
-            <ion-icon name="globe-outline"></ion-icon>
-          </label>
+          
 
 
 
@@ -89,19 +85,7 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link">Movie</a> 
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Tv Show</a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Web Series</a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Show Genre</a>
+              <a href="#middle" class="navbar-link">Movie</a> 
             </li>
 
           </ul>
@@ -179,10 +163,10 @@
         - #UPCOMING
       -->
 
-      <section class="upcoming">
+      <section class="upcoming" id="middle">
         <div class="container">
 
-          <div class="flex-wrapper">
+          <div class="flex-wrapper" >
 
             <div class="title-wrapper">
               <p class="section-subtitle">Searching Movies</p>
@@ -327,61 +311,7 @@
 
 
 
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
-
-    <div class="footer-top">
-      <div class="container">
-
-        <div class="footer-brand-wrapper">
-
-          <a href="./index.php" class="logo">
-            <img src="./assets/images/logo.svg" alt="Filmlane logo">
-          </a>
-
-          <ul class="footer-list">
-
-            <li>
-              <a href="./index.php" class="footer-link">Home</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Movie</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">TV Show</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Web Series</a>
-            </li>
-
-          </ul>
-
-        </div>
-
-
-        <div class="quicklink-wrapper">
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-
-    </div>
-
-  </footer>
-
-
-
-
-
+  
   <!-- 
     - #GO TO TOP
   -->
