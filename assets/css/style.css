@@ -263,7 +263,7 @@
   }
   
   .movie-card {
-    max-width: 200px;
+    max-width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -753,7 +753,7 @@
   \*-----------------------------------*/
   
   .tv-series {
-    background: url("../images/tv-series-bg.jpg") no-repeat;
+    background: url("../images/movie-detail-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-block: var(--section-padding);
@@ -959,7 +959,7 @@
   \*-----------------------------------*/
   
   .movie-detail {
-    background: url("../images/footer-bg.png") no-repeat;
+    background: url("../images/movie-detail-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-top: 160px;
@@ -977,7 +977,7 @@
   }
   
   .movie-detail-banner img {
-    width: 100%;
+    width: 325px;
     height: 100%;
     object-fit: cover;
   }
