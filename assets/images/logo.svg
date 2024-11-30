@@ -1,7 +1,10 @@
-<svg width="169" height="44" viewBox="0 0 169 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Path atau elemen lain tetap -->
-  <path d="M56.66 11.392H69.54V15.312H60.72V19.988H68.364V23.908H60.72V32H56.66V11.392Z" fill="currentColor"/>
-  
-  <!-- Teks baru -->
-  <text x="10" y="30" font-family="Arial, sans-serif" font-size="24" fill="black">Plot-Twist</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="75" viewBox="0 0 250 75" fill="none">
+  <circle cx="37.5" cy="37.5" r="25" fill="#E2D703"/>
+  <circle cx="37.5" cy="25" r="5" fill="black"/>
+  <circle cx="25" cy="37.5" r="5" fill="black"/>
+  <circle cx="37.5" cy="50" r="5" fill="black"/>
+  <circle cx="50" cy="37.5" r="5" fill="black"/>
+  <circle cx="37.5" cy="37.5" r="2.5" fill="black"/>
+  <path d="M62.5 42.5 Q57.5 37.5 62.5 32.5" stroke="#E2D703" stroke-width="5" fill="none"/>
+  <text x="75" y="45" fill="white" font-size="30px" font-family="Arial" font-weight="bold">Plot-twist</text>
 </svg>

@@ -282,30 +282,6 @@ $id = $data->id;
             <img src="../assets/images/logo.svg" alt="Filmlane logo">
           </a>
 
-          <ul class="footer-list">
-
-            <li>
-              <a href="../index.php" class="footer-link">Home</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Movie</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">TV Show</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Web Series</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Pricing</a>
-            </li>
-
-          </ul>
-
         </div>
 
         <div class="divider"></div>
