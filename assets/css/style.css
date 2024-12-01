@@ -1111,8 +1111,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 60px 30px;
     }
-  
-  
+    .movies-list.hidden {
+      display: none;
+    }
+    #search-results {
+      display: none; 
+    }
+    #search-results.active {
+      display: block;
+    }
   
     /**
      * HERO

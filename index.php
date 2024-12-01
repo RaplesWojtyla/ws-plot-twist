@@ -1,10 +1,10 @@
 <?php
-  require './inc/func.php';
-  $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-  $keyword = isset($_GET['search']) ? $_GET['search'] : "";
-  $totalItems = getTotalFilms($keyword);
-  $itemsPerPage = 20;
-  $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
+require './inc/func.php';
+$currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$keyword = isset($_GET['search']) ? $_GET['search'] : "";
+$totalItems = getTotalFilms($keyword);
+$itemsPerPage = 20;
+$paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
 ?>
 
 
@@ -54,7 +54,7 @@
 
 
         <div class="lang-wrapper">
-          
+
 
 
 
@@ -85,41 +85,7 @@
             </li>
 
             <li>
-              <a href="#middle" class="navbar-link">Movie</a> 
-            </li>
-
-          </ul>
-
-          <ul class="navbar-social-list">
-
-            <li>
-              <a href="#" class="navbar-social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-social-link">
-                <ion-icon name="logo-pinterest"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
+              <a href="#middle" class="navbar-link">Movie</a>
             </li>
 
           </ul>
@@ -155,7 +121,6 @@
               </button>
             </form>
           </div>
-          <div id="search-results"></div>
         </div>
       </section>
 
@@ -167,7 +132,7 @@
       <section class="upcoming" id="middle">
         <div class="container">
 
-          <div class="flex-wrapper" >
+          <div class="flex-wrapper">
 
             <div class="title-wrapper">
               <p class="section-subtitle">Searching Movies</p>
@@ -218,52 +183,54 @@
 
           </div>
 
-          <ul class="movies-list">
+          <div id="search-results"></div>
+          <ul class="movies-list" id="movies-list">
+
 
             <?php
             $res = showFilm($keyword, $currentPage, $itemsPerPage);
             foreach ($res as $data) {
             ?>
 
-            <li>
-              <div class="movie-card">
+              <li>
+                <div class="movie-card">
 
-                <a href=".\pages\movie-details.php?id=<?= $data->id ?>">
-                  <figure class="card-banner">
-                    <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href=".\movie-details.php?id=<?= $data->id ?>">
-                    <h3 class="card-title">
-                      <?= $data->namaFilm ?>
-                    </h3>
+                  <a href=".\pages\movie-details.php?id=<?= $data->id ?>">
+                    <figure class="card-banner">
+                      <img src="<?= $data->image ?>" alt="<?= $data->namaFilm ?>">
+                    </figure>
                   </a>
 
-                  <time datetime="2022">
-                    <?= $data->Tahun ?>
-                  </time>
-                </div>
+                  <div class="title-wrapper">
+                    <a href=".\movie-details.php?id=<?= $data->id ?>">
+                      <h3 class="card-title">
+                        <?= $data->namaFilm ?>
+                      </h3>
+                    </a>
 
-                <div class="card-meta">
-                  <div class="badge badge-outline">HD</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT137M"><?= $data->duration ?></time>
+                    <time datetime="2022">
+                      <?= $data->Tahun ?>
+                    </time>
                   </div>
 
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
+                  <div class="card-meta">
+                    <div class="badge badge-outline">HD</div>
 
-                    <data><?= $data->rating ?></data>
+                    <div class="duration">
+                      <ion-icon name="time-outline"></ion-icon>
+
+                      <time datetime="PT137M"><?= $data->duration ?></time>
+                    </div>
+
+                    <div class="rating">
+                      <ion-icon name="star"></ion-icon>
+
+                      <data><?= $data->rating ?></data>
+                    </div>
                   </div>
-                </div>
 
-              </div>
-            </li>
+                </div>
+              </li>
             <?php } ?>
           </ul>
           <!-- Pagination -->
@@ -271,25 +238,25 @@
           <!-- Updated pagination section -->
           <div class="pagination">
             <?php if ($paginationData['hasPrev']): ?>
-            <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn prev">Previous</a>
+              <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn prev">Previous</a>
             <?php else: ?>
-            <span class="pagination-btn prev disabled">Previous</span>
+              <span class="pagination-btn prev disabled">Previous</span>
             <?php endif; ?>
 
             <span class="page-numbers">
               <?php for ($i = $paginationData['start']; $i <= $paginationData['end']; $i++): ?>
-              <a href="?page=<?= $i; ?>&search=<?= urlencode($keyword); ?>"
-                class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
-                data-page="<?php echo $i; ?>">
-                <?php echo $i; ?>
-              </a>
+                <a href="?page=<?= $i; ?>&search=<?= urlencode($keyword); ?>"
+                  class="pagination-btn <?php echo ($i == $currentPage) ? 'active' : ''; ?>"
+                  data-page="<?php echo $i; ?>">
+                  <?php echo $i; ?>
+                </a>
               <?php endfor; ?>
             </span>
 
             <?php if ($paginationData['hasNext']): ?>
-            <a href="?page=<?= ($currentPage + 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
+              <a href="?page=<?= ($currentPage + 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn next">Next</a>
             <?php else: ?>
-            <span class="pagination-btn next disabled">Next</span>
+              <span class="pagination-btn next disabled">Next</span>
             <?php endif; ?>
           </div>
 
@@ -312,7 +279,7 @@
 
 
 
-  
+
   <!-- 
     - #GO TO TOP
   -->
@@ -337,23 +304,30 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
       $('#search').on('input', function() {
-          var keyword = $(this).val();
-          if (keyword.length > 1) {
-              $.ajax({
-                  url: './ajax/search.php',
-                  type: 'GET',
-                  data: { keyword: keyword },
-                  success: function(data) {
-                      $('#search-results').html(data);
-                  }
-              });
-          } else {
-              $('#search-results').empty();
-          }
+        var keyword = $(this).val();
+
+        if (keyword.length > 1) {
+          $('#movies-list').hide();
+          $('#search-results').show();
+
+          $.ajax({
+            url: './ajax/search.php',
+            type: 'GET',
+            data: {
+              keyword: keyword
+            },
+            success: function(data) {
+              $('#search-results').html(data);
+            }
+          });
+        } else {
+          $('#movies-list').show();
+          $('#search-results').hide();
+        }
       });
-  });
+    });
   </script>
   <script>
     $(document).ready(function() {
