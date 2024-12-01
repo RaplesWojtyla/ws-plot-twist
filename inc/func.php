@@ -49,6 +49,13 @@ function searchByTitle($keyword, $limit)
     WHERE {
         ?Film fil:hasId ?id .
         ?Film fil:hasTitle ?namaFilm .
+        ?Film fil:hasRating ?rating .
+        ?Film fil:hasImage ?image .
+        ?Film fil:hasDuration ?duration .
+        ?Film fil:hasYear ?Tahun .
+        ?Film fil:hasDirector ?director .
+        ?Film fil:hasCountry ?country .
+        ?Film fil:hasGenres ?genre .
 
 		FILTER(CONTAINS(LCASE(?namaFilm), LCASE('$keyword')) ) .
     }
