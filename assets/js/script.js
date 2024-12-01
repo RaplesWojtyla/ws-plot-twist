@@ -98,22 +98,4 @@ document.addEventListener("DOMContentLoaded", function () {
   updatePagination();
 });
 
-/**
- * Dropdown
- */
 
-document.addEventListener('DOMContentLoaded', function () {
-  const dropdownToggle = document.getElementById('dropdownToggle');
-  const dropdownMenu = document.getElementById('dropdownMenu');
-
-  dropdownToggle.addEventListener('click', function (event) {
-    event.stopPropagation(); // Mencegah klik menyebar ke elemen lain
-    dropdownMenu.style.display = 
-      dropdownMenu.style.display === 'block' ? 'none' : 'block';
-  });
-
-  // Sembunyikan dropdown saat klik di luar elemen
-  document.addEventListener('click', function () {
-    dropdownMenu.style.display = 'none';
-  });
-});

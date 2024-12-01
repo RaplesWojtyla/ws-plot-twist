@@ -142,11 +142,11 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
 
             <ul class="filter-list">
               <li class="dropdown">
-                <button class="filter-btn" id="dropdownToggle">
+                <button class="filter-btn" id="genredropdownToggle">
                   Genre
                   <span class="arrow-down"></span>
                 </button>
-                <ul class="dropdown-menu" id="dropdownMenu">
+                <ul class="dropdown-menu" id="genredropdownMenu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Comedy</a></li>
                   <li><a href="#">Drama</a></li>
@@ -169,15 +169,16 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
                   <li><a href="#">Kids</a></li>
                 </ul>
               </li>
-
-
-              <!-- <li>
-                <button class="filter-btn">TV Shows</button>
+              <li class="dropdown">
+                <button class="filter-btn" id="sortdropdownToggle">
+                  Sort by Rating
+                  <span class="arrow-down"></span>
+                </button>
+                <ul class="dropdown-menu" id="sortdropdownMenu">
+                  <li><a href="#">Lowest</a></li>
+                  <li><a href="#">Highest</a></li>
+                </ul>
               </li>
-
-              <li>
-                <button class="filter-btn">Anime</button>
-              </li> -->
 
             </ul>
 
@@ -328,6 +329,40 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
         }
       });
     });
+
+    /**
+ * Dropdown
+ */
+    document.addEventListener('DOMContentLoaded', function () {
+  // Pilih semua tombol dropdown dan menu dropdown
+  const dropdownToggles = document.querySelectorAll('.filter-btn');
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+  dropdownToggles.forEach((toggle, index) => {
+    const correspondingMenu = dropdownMenus[index]; // Cari menu yang sesuai dengan toggle
+
+    toggle.addEventListener('click', function (event) {
+      event.stopPropagation(); // Mencegah klik menyebar ke elemen lain
+
+      // Tutup semua dropdown lainnya sebelum membuka dropdown yang dipilih
+      dropdownMenus.forEach((menu) => {
+        if (menu !== correspondingMenu) menu.style.display = 'none';
+      });
+
+      // Toggle menu saat ini
+      correspondingMenu.style.display = 
+        correspondingMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+  // Sembunyikan semua dropdown saat klik di luar elemen
+  document.addEventListener('click', function () {
+    dropdownMenus.forEach((menu) => {
+      menu.style.display = 'none';
+    });
+  });
+});
+
   </script>
   <script>
     $(document).ready(function() {

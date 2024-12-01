@@ -554,24 +554,24 @@
     border: 2px solid var(--gunmetal-1);
     border-radius: 12px;
     padding: 10px 0;
-    min-width: 150px;
+    min-width: 200px !important; /* Pastikan dropdown memiliki panjang minimum */
     z-index: 1;
     list-style: none;
   }
   
   .dropdown-menu li a {
     color: var(--white);
-    padding: 8px 16px;
+    padding: 8px 12px !important; /* Tambahkan ruang pada teks */
     text-decoration: none;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: block !important; /* Gunakan block untuk mencegah teks dibagi ke baris baru */
+    white-space: nowrap !important; /* Pastikan teks tetap satu baris */
     font-size: var(--fs-11);
   }
   
   .dropdown-menu li a:hover {
     background-color: var(--gunmetal-1);
     border-radius: 8px;
-  }
+  }  
   
   .arrow-down {
     display: inline-block;
@@ -586,6 +586,7 @@
   .dropdown:hover .arrow-down {
     border-top-color: var(--citrine); 
   }
+  
   
   
   
