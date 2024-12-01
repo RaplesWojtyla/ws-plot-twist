@@ -28,11 +28,11 @@ function showFilm($keyword, $page, $itemsPerPage)
         ?Film fil:hasGenres ?genre .
 
 
-		FILTER(REGEX(?namaFilm, '$keyword', 'i') ||
-			   REGEX(?Tahun, '$keyword', 'i') ||
-               REGEX(?director, '$keyword', 'i') ||
-               REGEX(?country, '$keyword', 'i') ||
-               REGEX(?genre, '$keyword', 'i') 
+		FILTER(CONTAINS(LCASE(?namaFilm), LCASE('$keyword')) ||
+			   CONTAINS(LCASE(?Tahun), LCASE('$keyword')) ||
+               CONTAINS(LCASE(?director), LCASE('$keyword')) ||
+               CONTAINS(LCASE(?country), LCASE('$keyword')) ||
+               CONTAINS(LCASE(?genre), LCASE('$keyword')) 
                 ) .
     }
     ORDER BY ?namaFilm
@@ -42,31 +42,56 @@ function showFilm($keyword, $page, $itemsPerPage)
     return query($query);
 }
 
-function searchByTitle($keyword, $limit) 
+function sortByRate($keyword, $page, $itemsPerPage) 
 {
-    $query = "
-    SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?Tahun
-    WHERE {
-        ?Film fil:hasId ?id .
-        ?Film fil:hasTitle ?namaFilm .
-        ?Film fil:hasRating ?rating .
-        ?Film fil:hasImage ?image .
-        ?Film fil:hasDuration ?duration .
-        ?Film fil:hasYear ?Tahun .
-        ?Film fil:hasDirector ?director .
-        ?Film fil:hasCountry ?country .
-        ?Film fil:hasGenres ?genre .
-
-		FILTER(CONTAINS(LCASE(?namaFilm), LCASE('$keyword')) ) .
+    $offset = ($page - 1) * $itemsPerPage;
+    
+    if ($keyword == "Highest")
+    {
+        $query = "
+        SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?Tahun
+        WHERE {
+            ?Film fil:hasId ?id .
+            ?Film fil:hasTitle ?namaFilm .
+            ?Film fil:hasRating ?rating .
+            ?Film fil:hasImage ?image .
+            ?Film fil:hasDuration ?duration .
+            ?Film fil:hasYear ?Tahun .
+            ?Film fil:hasDirector ?director .
+            ?Film fil:hasCountry ?country .
+            ?Film fil:hasGenres ?genre .
+        }
+        ORDER BY DESC(?rating)
+        LIMIT " . $itemsPerPage . "
+        OFFSET " . $offset;
     }
-    ORDER BY ?namaFilm
-    LIMIT " . $limit;
+    else 
+    {
+        $query = "
+        SELECT ?Film ?id ?namaFilm ?rating ?image ?duration ?Tahun
+        WHERE {
+            ?Film fil:hasId ?id .
+            ?Film fil:hasTitle ?namaFilm .
+            ?Film fil:hasRating ?rating .
+            ?Film fil:hasImage ?image .
+            ?Film fil:hasDuration ?duration .
+            ?Film fil:hasYear ?Tahun .
+            ?Film fil:hasDirector ?director .
+            ?Film fil:hasCountry ?country .
+            ?Film fil:hasGenres ?genre .
+        }
+        ORDER BY ASC(?rating)
+        LIMIT " . $itemsPerPage . "
+        OFFSET " . $offset;
+    }
 
     return query($query);
 }
 
 function getTotalFilms($keyword) 
 {
+    $keyword = ($keyword == "Highest") || ($keyword == "Lowest") ? "" : $keyword;
+
     $query = "
     SELECT (COUNT(?Film) as ?count)
     WHERE {
