@@ -50,14 +50,7 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
       </a>
 
       <div class="header-actions">
-
-
-
         <div class="lang-wrapper">
-
-
-
-
         </div>
 
         <button class="menu-open-btn" data-menu-open-btn>
@@ -175,8 +168,8 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
                   <span class="arrow-down"></span>
                 </button>
                 <ul class="dropdown-menu" id="sortdropdownMenu">
-                  <li><a href="#">Lowest</a></li>
                   <li><a href="#">Highest</a></li>
+                  <li><a href="#">Lowest</a></li>
                 </ul>
               </li>
 
@@ -189,7 +182,12 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
 
 
             <?php
-            $res = showFilm($keyword, $currentPage, $itemsPerPage);
+            if ($keyword == "Highest" || $keyword == "Lowest") {
+              $res = sortByRate($keyword, $currentPage, $itemsPerPage);
+            } else {
+              $res = showFilm($keyword, $currentPage, $itemsPerPage);
+            }
+
             foreach ($res as $data) {
             ?>
 
@@ -237,7 +235,8 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
           <!-- Pagination -->
 
           <!-- Updated pagination section -->
-          <div class="pagination">
+          <div id="livesearchPagination"></div>
+          <div class="pagination" id="pagination">
             <?php if ($paginationData['hasPrev']): ?>
               <a href="?page=<?= ($currentPage - 1); ?>&search=<?= urlencode($keyword); ?>" class="pagination-btn prev">Previous</a>
             <?php else: ?>
@@ -304,18 +303,23 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./inc/function.js"></script>
+
   <script>
     $(document).ready(function() {
       $('#search').on('input', function() {
         var keyword = $(this).val();
 
-        if (keyword.length > 1) {
+        if (keyword.length > 1) 
+        {
           $('#movies-list').hide();
+          $('#pagination').hide();
           $('#search-results').show();
+          $('#livesearchPagination').show();
 
           $.ajax({
             url: './ajax/search.php',
-            type: 'GET',
+            type: 'POST',
             data: {
               keyword: keyword
             },
@@ -323,60 +327,115 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
               $('#search-results').html(data);
             }
           });
-        } else {
+        } 
+        else
+        {
           $('#movies-list').show();
+          $('#pagination').show();
           $('#search-results').hide();
+          $('#livesearchPagination').hide();
         }
       });
     });
+  </script>
 
-    /**
- * Dropdown
- */
+  <script>
     document.addEventListener('DOMContentLoaded', function () {
-  // Pilih semua tombol dropdown dan menu dropdown
-  const dropdownToggles = document.querySelectorAll('.filter-btn');
-  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+      const dropdownToggles = document.querySelectorAll('.filter-btn');
+      const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
-  dropdownToggles.forEach((toggle, index) => {
-    const correspondingMenu = dropdownMenus[index]; // Cari menu yang sesuai dengan toggle
+      dropdownToggles.forEach((toggle, index) => {
+        const correspondingMenu = dropdownMenus[index];
 
-    toggle.addEventListener('click', function (event) {
-      event.stopPropagation(); // Mencegah klik menyebar ke elemen lain
+        toggle.addEventListener('click', function (event) {
+          event.stopPropagation();
 
-      // Tutup semua dropdown lainnya sebelum membuka dropdown yang dipilih
-      dropdownMenus.forEach((menu) => {
-        if (menu !== correspondingMenu) menu.style.display = 'none';
+          dropdownMenus.forEach((menu) => {
+            if (menu !== correspondingMenu) menu.style.display = 'none';
+          });
+
+          correspondingMenu.style.display = correspondingMenu.style.display === 'block' ? 'none' : 'block';
+        });
       });
 
-      // Toggle menu saat ini
-      correspondingMenu.style.display = 
-        correspondingMenu.style.display === 'block' ? 'none' : 'block';
+      document.addEventListener('click', function () {
+        dropdownMenus.forEach((menu) => {
+          menu.style.display = 'none';
+        });
+      });
     });
-  });
-
-  // Sembunyikan semua dropdown saat klik di luar elemen
-  document.addEventListener('click', function () {
-    dropdownMenus.forEach((menu) => {
-      menu.style.display = 'none';
-    });
-  });
-});
-
   </script>
+
   <script>
     $(document).ready(function() {
-      $('#dropdownMenu li').on('click', function() {
+      $('#genredropdownMenu li').on('click', function() {
         var genre = $(this).text().trim();
 
-        searchByGenre(genre);
+        if (genre.length > 1)
+        {
+          $('#movies-list').hide();
+          $('#pagination').hide();
+          $('#search-results').show();
+          $('#livesearchPagination').show();
+
+          $.ajax({
+            url: './ajax/genre.php',
+            type: 'POST',
+            data: { genre: genre },
+            success: function (response) {
+              console.log(genre)
+              $('#search-results').html(response);
+            },
+            error: function (xhr, status, error) {
+              console.error('Error:', error);
+            }
+          }); 
+        }
+        else
+        {
+          $('#movies-list').show();
+          $('#pagination').show();
+          $('#search-results').hide();
+          $('#livesearchPagination').hide();
+        }
       });
     });
+  </script>
+  
+  <script>
+    $(document).ready(function() {
+      $('#sortdropdownMenu li').on('click', function() {
+        var sort = $(this).text().trim();
+        
+        if (sort.length > 1)
+        {
+          $('#movies-list').hide();
+          $('#pagination').hide();
+          $('#search-results').show();
+          $('#livesearchPagination').show();
 
-    function searchByGenre(genre) {
-      console.log('Searching for genre:', genre); // Tes output
-      window.location.href = 'index.php?search=' + encodeURIComponent(genre);
-    }
+          $.ajax({
+            url: './ajax/sortRating.php',
+            type: 'POST',
+            data: { sort: sort },
+            success: function (response) {
+              console.log(sort)
+              $('#search-results').html(response);
+            },
+            error: function (xhr, status, error) {
+              console.error('Error:', error);
+            }
+          }); 
+        }
+        else
+        {
+          $('#movies-list').show();
+          $('#pagination').show();
+          $('#search-results').hide();
+          $('#livesearchPagination').hide();
+        }
+      });
+    });
   </script>
 </body>
 

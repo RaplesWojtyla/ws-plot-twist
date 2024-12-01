@@ -5,15 +5,14 @@ require '../inc/func.php';
 
 <ul class="movies-list">
     <?php
-    if (isset($_POST['keyword'])) {
-        $keyword = $_POST['keyword'];
+    if (isset($_POST['sort'])) {
+        $keyword = $_POST['sort'];
         $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         $totalItems = getTotalFilms($keyword);
         $itemsPerPage = 20;
         $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);
 
-        $results = showFilm($keyword, $currentPage, itemsPerPage: $itemsPerPage);
-
+        $results = sortByRate($keyword, $currentPage, itemsPerPage: $itemsPerPage);
         foreach ($results as $result) { ?>
             <li>
                 <div class="movie-card">
