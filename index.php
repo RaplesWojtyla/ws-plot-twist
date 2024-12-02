@@ -140,26 +140,26 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
                   <span class="arrow-down"></span>
                 </button>
                 <ul class="dropdown-menu" id="genredropdownMenu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Comedy</a></li>
-                  <li><a href="#">Drama</a></li>
-                  <li><a href="#">Horror</a></li>
-                  <li><a href="#">Romance</a></li>
-                  <li><a href="#">Adventure</a></li>
-                  <li><a href="#">Thriller</a></li>
-                  <li><a href="#">Mystery</a></li>
-                  <li><a href="#">Science Fiction</a></li>
-                  <li><a href="#">History</a></li>
-                  <li><a href="#">Family</a></li>
-                  <li><a href="#">Animation</a></li>
-                  <li><a href="#">Crime</a></li>
-                  <li><a href="#">War</a></li>
-                  <li><a href="#">Anime</a></li>
-                  <li><a href="#">Music</a></li>
-                  <li><a href="#">Western</a></li>
-                  <li><a href="#">Drama</a></li>
-                  <li><a href="#">Documentary</a></li>
-                  <li><a href="#">Kids</a></li>
+                  <li><a href="#middle">Action</a></li>
+                  <li><a href="#middle">Comedy</a></li>
+                  <li><a href="#middle">Drama</a></li>
+                  <li><a href="#middle">Horror</a></li>
+                  <li><a href="#middle">Romance</a></li>
+                  <li><a href="#middle">Adventure</a></li>
+                  <li><a href="#middle">Thriller</a></li>
+                  <li><a href="#middle">Mystery</a></li>
+                  <li><a href="#middle">Science Fiction</a></li>
+                  <li><a href="#middle">History</a></li>
+                  <li><a href="#middle">Family</a></li>
+                  <li><a href="#middle">Animation</a></li>
+                  <li><a href="#middle">Crime</a></li>
+                  <li><a href="#middle">War</a></li>
+                  <li><a href="#middle">Anime</a></li>
+                  <li><a href="#middle">Music</a></li>
+                  <li><a href="#middle">Western</a></li>
+                  <li><a href="#middle">Drama</a></li>
+                  <li><a href="#middle">Documentary</a></li>
+                  <li><a href="#middle">Kids</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -168,8 +168,8 @@ $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPag
                   <span class="arrow-down"></span>
                 </button>
                 <ul class="dropdown-menu" id="sortdropdownMenu">
-                  <li><a href="#">Highest</a></li>
-                  <li><a href="#">Lowest</a></li>
+                  <li><a href="#middle">Highest</a></li>
+                  <li><a href="#middle">Lowest</a></li>
                 </ul>
               </li>
 
