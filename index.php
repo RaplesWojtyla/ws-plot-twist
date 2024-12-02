@@ -1,7 +1,7 @@
 <?php
 require './inc/func.php';
 $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$keyword = isset($_POST['keyword']) ? (str_replace(["'", '"', '-', "+"], "", $_POST['keyword'])) : "";
+$keyword = isset($_GET['search']) ? (str_replace(["'", '"', '-', "+"], "", $_GET['search'])) : "";
 $totalItems = getTotalFilms($keyword);
 $itemsPerPage = 20;
 $paginationData = generatePaginationData($currentPage, $totalItems, $itemsPerPage);

@@ -125,7 +125,7 @@ $id = $data->id;
             </h2>
             <div class="meta-wrapper">
               <div class="badge-wrapper">
-                <a href="./index.php?search=<?= $data->country ?>">
+                <a href="../index.php?search=<?= $data->country ?>">
                   <div class="badge badge-outline"><?= $data->country ?></div>
                 </a>
                 <div class="badge badge-fill">HD</div>
