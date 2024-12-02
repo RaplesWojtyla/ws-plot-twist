@@ -6,7 +6,7 @@ require '../inc/func.php';
 <ul class="movies-list">
     <?php
     if (isset($_POST['keyword'])) {
-        $keyword = str_replace(["'", '"', "-"], "", $_POST['keyword']);
+        $keyword = str_replace(["'", '"', "-", "+"], "", $_POST['keyword']);
         $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         $totalItems = getTotalFilms($keyword);
         $itemsPerPage = 20;
